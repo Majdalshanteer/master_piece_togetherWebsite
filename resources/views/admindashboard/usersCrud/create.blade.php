@@ -24,6 +24,9 @@
                     enctype="multipart/form-data">
                     @csrf
 
+
+
+
                     <div class="form-body">
                         <div class="row">
                             <div class="col-12">

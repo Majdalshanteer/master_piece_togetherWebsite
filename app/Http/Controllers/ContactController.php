@@ -42,18 +42,18 @@ class ContactController extends Controller
 
     public function destroy($id)
     {
-        // $message = Contact::where('id', $id)->first();
-        // $message->delete();
+        $message = Contact::where('id', $id)->first();
+        $message->delete();
 
-        // return redirect()->route('view-messages.index')
-        //     ->with('success', 'complaint deleted successfully');
+        return redirect()->route('view-messages.index')
+            ->with('success', 'complaint deleted successfully');
     }
 
 
     public function show($id)
     {
-        // $message = Contact::where('id', $id)->first();
-        // return view('adminpages.showcomplaint', compact('message'));
+        $message = Contact::where('id', $id)->first();
+        return view('admindashboard.showcomplaint', compact('message'));
     }
 
 

@@ -30,7 +30,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="first-name-icon">Name</label>
                                     <div class="position-relative">
-                                        <input type="text" name="name" value="" class="form-control" placeholder="Service Name"
+                                        <input type="text" name="service_name" value="" class="form-control" placeholder="Service Name"
                                             id="first-name-icon">
                                         <div class="form-control-icon">
                                             <i class="bi bi-person"></i>

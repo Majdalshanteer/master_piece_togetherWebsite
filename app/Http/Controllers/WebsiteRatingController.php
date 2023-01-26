@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\WebsiteRating;
 
@@ -10,7 +10,21 @@ class WebsiteRatingController extends Controller
     public function index()
     {
         $reviews = WebsiteRating::orderBy('id','desc')->paginate(4)->where('status', 'ok');
-        return view('pages.index', compact('reviews'));
+
+
+        // top five workers
+        $topFiveWorkers = DB::table('users')
+        ->select('users.*', DB::raw('AVG(ratings.rate) as avg_rating'))
+        ->join('ratings', 'users.id', '=', 'ratings.worker_id')
+        ->groupBy('ratings.worker_id')
+        ->orderBy('avg_rating', 'desc')
+        ->take(4)
+        ->get();
+
+
+        return view('pages.index', compact('reviews','topFiveWorkers'));
+
+
 
     }
 

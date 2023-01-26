@@ -23,6 +23,11 @@ use App\Http\Controllers\singleProductController;
 use App\Http\Controllers\websiteRatingController;
 use App\Http\Controllers\WorkersTableAdminController;
 use App\Http\Controllers\ProfileAdminController;
+use App\Http\Controllers\ProfileWorkerController;
+use App\Http\Controllers\BookingWorkerController;
+use App\Http\Controllers\TopRatedController;
+use App\Http\Controllers\WebsiteRatingAdminController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,9 +49,9 @@ use App\Http\Controllers\ProfileAdminController;
 Route::get('/404', function () {
     return view('pages.404');
 });
-Route::get('/about', function () {
-    return view('pages.about');
-});
+// Route::get('/about', function () {
+//     return view('pages.about');
+// });
 Route::get('/appointment', function () {
     return view('pages.appointment');
 });
@@ -80,12 +85,17 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //dashboard routes
 Route::resource('/', websiteRatingController::class);
+Route::resource('/about', TopRatedController::class);
+// Route::resource('/about', TopRatedController::class);
 Route::resource('/usersinfo', UserController::class);
 Route::resource('/workersinfo', WorkersTableAdminController::class);
 Route::resource('categories', CategoryCrudController::class);
 Route::resource('/servicesCrud', servicesCrudController::class);
 Route::resource('/bookCrud', BookingController::class);
+Route::resource('/bookingWorker', BookingWorkerController::class);
 Route::resource('/rate', RatingController::class);
+Route::resource('/connectService', UserServicesController::class);
+Route::resource('view-messages', ContactController::class);
 
 Route::resource('/orders', OrdersController::class);
 
@@ -111,7 +121,10 @@ Route::post('Rating/create/{worker_id}',[RatingController::class, 'create'])->na
 // Route::get('/das', function () {
 //     return view('admindashboard.index');
 // });
-Route::resource('das', ProfileAdminController::class);
+Route::resource('adminDashboard', ProfileAdminController::class);
+Route::resource('workerDash', ProfileWorkerController::class);
+Route::resource('WebsiteRating', WebsiteRatingAdminController::class);
+
 Route::resource('services', CategoryController::class);
 // Route::resource('servicesView', servicesController::class);
 Route::resource('product', singleProductController::class);

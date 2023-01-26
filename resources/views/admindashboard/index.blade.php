@@ -1,8 +1,6 @@
 @extends('admindashboard.layouts.master')
 @section('content')
-@if (Auth::user()->type !== 'Admin')
-    'THIS IS WHAT I WANT ONLY ADMIN USERS TO SEE!
-@endif
+
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -135,7 +133,7 @@
                         @endif
                       <div class="row">
                         <div class="col-lg-6 col-md-12">
- <form id="formAccountSettings" method="POST" action="{{ route('das.update', Auth::user()->id) }}" enctype="multipart/form-data">
+ <form id="formAccountSettings" method="POST" action="{{ route('adminDashboard.update', Auth::user()->id) }}" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                           <div class="card mb-4">

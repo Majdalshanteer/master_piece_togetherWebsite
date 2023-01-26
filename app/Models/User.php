@@ -66,16 +66,26 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\UserService','user_id');
 
     }
+ public function serviceuser()
+    {
+        return $this->hasMany('App\Models\Service');
+
+    }
 
 
 
     public function rating()
     {
-        return $this->hasMany(Rating::class);
+        return $this->hasMany('App\Models\Rating','worker_id');
     }
+
     public function reviews()
     {
         return $this->belongsTo(websiteRating::class);
     }
+
+
+
+
 }
 

@@ -1,21 +1,27 @@
 <?php
 
+
 namespace App\Http\Controllers;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use App\Models\Service;
+use App\Models\UserService;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Hash;
 class WorkersTableAdminController extends Controller
 {
     public function index()
     {
-        $workers = User::orderBy('id','desc')->paginate(5)->where('type', 'Worker');
-        return view('admindashboard.workersCrud.workers', compact('workers'));
+        $workers = User::all()->where('type', 'Worker');
+        $services = Service::all()->where('type', 'book_unit');
+        return view('admindashboard.workersCrud.workers', compact('workers','services'));
 
     }
 
     public function create()
     {
-        return view('admindashboard.workersCrud.create');
+        $services = Service::where('type', 'book_unit')->orWhere('type', 'book_hr')->get();
+        return view('admindashboard.workersCrud.create', compact('services'));
     }
 
     /**
@@ -26,29 +32,73 @@ class WorkersTableAdminController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|max:255|unique:users',
-            'phone' => 'required|digits:10',
-            'password' => 'required',
-            'type' => 'required',
+    //     $request->validate([
+    //         'name' => 'required',
+    //         'email' => 'required|email|max:255|unique:users',
+    //         'phone' => 'required|digits:10',
+    //         'password' => 'required',
+    //         'type' => 'required',
 
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3048',
-        ]);
+    //         // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3048',
+    //     ]);
 
-        $input = $request->all();
 
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
 
-        User::create($input);
+    //     User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'phone' => $request->phone,
+    //         'type'  => $request->type,
+    //         'password' => Hash::make($request->password),
+
+    //        ]);
+
+
+    //  if ($image = $request->file('image')) {
+    //         $destinationPath = 'images/';
+    //         $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+    //         $image->move($destinationPath, $profileImage);
+    //         $input['image'] = "$profileImage";
+    //     }
+    //      $input = $request->all();
+    //     //  UserService::create($input);
+
+    $request->validate([
+        'name' => 'required',
+        'phone' => 'required',
+        'email' => 'required|email|max:255|unique:users',
+        'password' => 'required',
+        'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3048',
+
+    ]);
+
+    $file_name = time() . '.' . request()->image->getClientOriginalExtension();
+    request()->image->move(public_path('images'), $file_name);
+
+
+    $user = new User();
+
+    $id = DB::table('users')->insertGetId(
+        [
+            'name' => $request->name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'type'=>$request->type,
+            'image' => $file_name,
+            'password' => Hash::make($request->password),
+
+        ]
+    );
+    DB::table('user_services')->insert([
+        [
+          'user_id' => $id,
+          'service_id'=>$request->service_id
+        ]
+    ]);
+
 
         return redirect()->route('workersinfo.index')
-            ->with('success', 'user created successfully.');
+            ->with('success', 'worker created successfully.');
     }
 
 

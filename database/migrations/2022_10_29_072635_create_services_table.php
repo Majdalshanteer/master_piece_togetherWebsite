@@ -15,11 +15,12 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('image');
             $table->string('image2')->default('_');
             $table->string('image3')->default('_');
             $table->string('image4')->default('_');
-            $table->string('name');
+
             $table->enum('type', ['book_unit', 'book_hr','book_m2', 'cart'])->default('book_unit');
             $table->decimal('price')->default('0');
             $table->string('description')->nullable();

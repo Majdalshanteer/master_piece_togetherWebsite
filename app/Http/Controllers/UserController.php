@@ -1,6 +1,6 @@
 <?php
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Validation\Rules;
@@ -8,7 +8,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('id','desc')->paginate(5)->where('type', 'User');
+        $users = User::all()->where('type', 'User');
         return view('admindashboard.usersCrud.users', compact('users'));
 
     }
@@ -30,6 +30,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|max:255|unique:users',
             'phone' => 'required|digits:10',
+
             'password' => 'required',
             'type' => 'required',
 
@@ -45,7 +46,15 @@ class UserController extends Controller
             $input['image'] = "$profileImage";
         }
 
-        User::create($input);
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'type'  => $request->type,
+
+            'password' => Hash::make($request->password),
+
+           ]);
 
         return redirect()->route('usersinfo.index')
             ->with('success', 'user created successfully.');

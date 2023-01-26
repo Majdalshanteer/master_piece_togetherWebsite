@@ -387,97 +387,50 @@
     <!-- Project End -->
 
 
+    {{-- <img class="rounded-circle" src="/images/{{$worker->image}}" width="200px" height="200px" alt="Icon"> --}}
+
+
     <!-- Team Start -->
     <div class="container-xxl py-5">
         <div class="container">
             <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-                <h4 class="section-title">Top 4 Workers</h4>
+                <h4 class="section-title">Top 5 Workers</h4>
                 <h1 class="display-5 mb-4">Your Opinion means a lot to us please rate them </h1>
             </div>
             <div class="row g-0 team-items">
-                <div class="col-lg-1 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="col-lg-2 wow fadeInUp" data-wow-delay="0.1s">
+                </div>
+ @foreach($topFiveWorkers as $worker)
+                <div class="col-lg-2 wow fadeInUp" data-wow-delay="0.1s">
 
-                </div>
-                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+
                     <div class="team-item position-relative">
                         <div class="position-relative">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
+                            <img class="img-fluid" src="/images/{{$worker->image}}" style="width: 300px ; height:200px"  alt="">
+
                             <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
+                                {{-- <i class="fab fa-facebook-f"></i> --}}
+                                <a class="btn btn-square" href="{{ route('workers.show', $worker->id) }}"><i class="bi bi-star"></i></a>
+                                <a class="btn btn-square" href="{{ route('workers.show', $worker->id) }}"><i class="bi bi-eye"></i></a>
+                                <a class="btn btn-square" href="{{ route('workers.show', $worker->id) }}"><i class="bi bi-pencil-square"></i></a>
                             </div>
                         </div>
                         <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">Architect Name</h3>
-                            <span class="text-primary">Designation</span>
+                            <h3 class="mt-2"> {{$worker->name}}</h3>
+                            @for($i=1; $i<=$worker->avg_rating; $i++)
+
+                            <span class="text-primary"><i class="fa fa-star text-warning " ></i></span>
+                            @endfor
+                            {{-- <span class="text-primary">Designation</span> --}}
+                            <br>
+                           ( {{round($worker->avg_rating,2)}} )
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">Architect Name</h3>
-                            <span class="text-primary">Designation</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">Architect Name</h3>
-                            <span class="text-primary">Designation</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">Architect Name</h3>
-                            <span class="text-primary">Designation</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item position-relative">
-                        <div class="position-relative">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                            <div class="team-social text-center">
-                                <a class="btn btn-square" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-square" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="bg-light text-center p-4">
-                            <h3 class="mt-2">Architect Name</h3>
-                            <span class="text-primary">Designation</span>
-                        </div>
-                    </div>
-                </div>
+
+
+
+                </div> @endforeach
+
             </div>
         </div>
     </div>

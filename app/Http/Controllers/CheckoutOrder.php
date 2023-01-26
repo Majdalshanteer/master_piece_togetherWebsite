@@ -46,7 +46,7 @@ class CheckoutOrder extends Controller
 
 
         session()->forget("order");
-        return redirect()->route('pastOrders')
+        return redirect()->back()
             ->with('success', 'Order created successfully.');
     }
 }

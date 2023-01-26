@@ -179,7 +179,15 @@
         </div>
     </div> --}}
     <!-- Team End -->
-        
+
+@foreach($topFiveWorkers as $worker)
+{{$worker->avg_rating}}
+{{$worker->name}}
+<img class="rounded-circle" src="/images/{{$worker->image}}" width="200px" height="200px" alt="Icon">
+
+
+@endforeach
+
 
     <div class="container-xxl py-5">
         <div class="container">
@@ -198,9 +206,9 @@
                     <p class="mb-4">
 
                         ”Together” is supporting a small business success. Small businesses are important of the economy, they create jobs by their innovation.
-                        
+
                         Our website allow them to  connect with more customers, establish and build their own stores, create jobs in their communities.
-                        
+
                         </p>
                     <div class="d-flex align-items-center mb-5">
                         <div class="d-flex flex-shrink-0 align-items-center justify-content-center border border-5 border-primary" style="width: 120px; height: 120px;">

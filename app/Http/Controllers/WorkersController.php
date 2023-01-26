@@ -9,7 +9,7 @@ class WorkersController extends Controller
 {
     public function index()
     {
-    $workers= User::orderBy('id','desc')->paginate(5)->where('type', 'Worker');
+    $workers= User::all()->where('type', 'Worker');
 
     return view('pages/workers', compact('workers'));
 

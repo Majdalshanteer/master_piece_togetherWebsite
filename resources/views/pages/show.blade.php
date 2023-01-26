@@ -152,7 +152,7 @@
                     </div>
                     <div class="col-sm-9 text-secondary">
                       @foreach($worker->serviceSection as $service)
-{{$service->service->name }}|
+{{$service->service->service_name }}|
 @endforeach
                     </div>
                   </div>

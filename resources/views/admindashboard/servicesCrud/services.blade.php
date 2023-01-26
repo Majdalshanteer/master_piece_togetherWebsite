@@ -112,7 +112,7 @@
                                             @foreach ($services as $service)
                                             <tr>
                                                 <td><span class="badge badge-light-warning">{{ $service->id }}</span></td>
-                                                <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $service->name }}</a></td>
+                                                <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $service->service_name }}</a></td>
                                                 <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $service->type }}</a></td>
                                                 <td><a href="javascript:void(0)" class="font-bold link"><img src="/servicesImages/{{ $service->image }}"  width="80px" height="80px"></a></td>
                                                 <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $service->category->name }}</a></td>

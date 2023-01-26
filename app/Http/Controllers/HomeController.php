@@ -36,9 +36,9 @@ class HomeController extends Controller
                 'user'=>$user
             ]);
         } else if($user == 'Worker'){
-            return  view('pages.contact');
-        }
-
+            return  view('workerdashboard.index', [
+                'user'=>$user
+            ]);}
 
         else{
             return redirect('/');

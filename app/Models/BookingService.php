@@ -19,7 +19,8 @@ class BookingService extends Model
         'phone',
         'location',
         'user_id',
-        'total_price'
+        'total_price',
+        'status'
 
     ];
 

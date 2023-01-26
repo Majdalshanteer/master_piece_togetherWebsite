@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('location');
+            $table->enum('status', ['Pending','confirm','not available','completed'])->default('Pending');
 
 
             $table->timestamps();

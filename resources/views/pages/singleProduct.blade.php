@@ -101,7 +101,7 @@
                 <div class="col-lg-7 mt-5">
                     <div class="card">
                         <div class="card-body" style="height:420px ">
-                            <h1 class="h2"> {{ $service->name }}</h1>
+                            <h1 class="h2"> {{ $service->service_name }}</h1>
                             <p class="h3 py-2"> {{ $service->price }} JD</p>
                             <h6>Description:</h6>
                             <p>{{ $service->description }}</p>

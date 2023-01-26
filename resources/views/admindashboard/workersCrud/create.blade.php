@@ -18,6 +18,12 @@
             </ul>
         </div>
     @endif
+
+
+
+
+
+
         <div class="card-content">
             <div class="card-body">
                 <form class="form form-vertical" method="POST" action="{{ route('workersinfo.store') }}"
@@ -38,6 +44,10 @@
                                     </div>
                                 </div>
                             </div>
+
+
+
+
 
                             <div class="col-12">
 
@@ -85,12 +95,27 @@
 
                                     <div class="form-group mb-4">
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">User Type</label>
-                                        <select name="type" class="custom-select mr-sm-2" id="inlineFormCustomSelect" onchange = "ShowHideDiv()">
+                                        <select name="type" class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
                                             {{-- <option selected>Choose...</option> --}}
-                                            <option value="User" >User</option>
-                                            <option value="Admin">Admin</option>
+                                          
                                             <option value="Worker"selected>Worker</option>
-                                            <option value="Driver">Driver</option>
+
+                                        </select>
+                                    </div>
+
+                            </div>
+
+
+
+                            <div class="col-12">
+
+                                    <div class="form-group mb-4">
+                                        <label class="mr-sm-2" for="inlineFormCustomSelect">Select Service</label>
+                                        <select name="service_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
+                                            {{-- <option selected>Choose...</option> --}}
+                                               @foreach($services as $service)
+                                               <option value="{{$service->id}}" >{{$service->name}}</option>
+                                           @endforeach
                                         </select>
                                     </div>
 

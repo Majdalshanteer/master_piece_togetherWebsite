@@ -639,7 +639,7 @@ h6,
             }
 
             .shopping-cart .summary {
-                border-top: 2px solid #fec45b;
+                border-top: 2px solid #b78d65;
                 background-color: #fffcf5;
                 height: 100%;
                 padding: 30px;
@@ -974,7 +974,7 @@ h6,
 
 
 
-
+/* product cart section */
 
 .textHo:hover{
     transform: scale(1.03);
@@ -1010,5 +1010,38 @@ h6,
 
 
 
+/* workers show */
+.containerr {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 300px;
+    aspect-ratio:12/14;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
 
+.info {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 20px 20px 20px;
+    color: #fff;
+    backdrop-filter: blur(10px);
+    background-color: #4848481a;
+}
+.name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.profession {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+
+/* error page */
 

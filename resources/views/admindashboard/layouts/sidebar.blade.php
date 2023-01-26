@@ -12,7 +12,7 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/das"
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/adminDashboard"
                                 aria-expanded="false"><i data-feather="home" class="feather-icon"></i><span
                                     class="hide-menu">Dashboard</span></a></li>
                         <li class="list-divider"></li>
@@ -34,12 +34,23 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/servicesCrud"
                             aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
                                 class="hide-menu">Services</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/connectService"
+                            aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
+                                class="hide-menu">Connect Services</span></a></li>
+
+
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/bookCrud"
                             aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
                                 class="hide-menu">Book Services</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/orders"
                             aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
                                 class="hide-menu">Orders</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/WebsiteRating"
+                            aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
+                                class="hide-menu">Website Rating</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/view-messages"
+                            aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
+                                class="hide-menu">Complaints</span></a></li>
 
 
 

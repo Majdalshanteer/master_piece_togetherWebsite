@@ -4,7 +4,21 @@
 
 @section('content')
 
+@if ($errors->any())
+<div class="alert alert-danger" style="text-align: left">
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 
+@if(Session::has('success'))
+<div class="alert alert-success">
+    {{Session::get('success')}}
+</div>
+@endif
     <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
             <h1 class="display-1 text-white animated slideInDown">Cart</h1>
@@ -33,7 +47,8 @@
                                     cart align-middle mx-2">
                                         <thead class="bg-white">
                                             <tr>
-                                                <th colspan="2"></th>
+                                                <th ></th>
+                                                <th >Image</th>
                                                 <th>Products</th>
                                                 <th>Price</th>
                                                 <th>Quantity</th>
@@ -50,7 +65,9 @@
 
                                                             <button value="" class="btn" data-bs-toggle="modal"
                                                                 data-bs-target="#exampleModal{{ $service->id }}">
-                                                                <i class="bi bi-x-circle text-danger"></i>
+
+                                                                <i class="bi bi-bag-x text-danger fs-4"></i>
+
                                                             </button>
                                                             <!-- Modal -->
                                                             <div class="modal fade" id="exampleModal{{ $service->id }}"
@@ -77,8 +94,7 @@
                                                                                     class="btn btn-secondary bg-black"
                                                                                     data-bs-dismiss="modal">Close</button>
                                                                                 <button type="submit"
-                                                                                    class="btn btn-primary">Save
-                                                                                    changes</button>
+                                                                                    class="btn btn-primary">Delete</button>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -93,7 +109,7 @@
                                                             <a style="color: black"
                                                                 {{-- href="{{ route('restaurants.show', $restaurant->id) }}" --}}
                                                                 class="text-decoration-none">
-                                                                {{ $service->name }}
+                                                                {{ $service->service_name }}
                                                             </a>
                                                         </td>
                                                         <td>
@@ -162,7 +178,7 @@
                                                 <input type="hidden" name="total"
                                                     value="{{ $price}}">
                                                 <div class="d-grid gap-2">
-                                                    <button class="btn btn-lg " style="background-color:#fec45b"
+                                                    <button class="btn btn-lg text-white" style="background-color:#b78d65"
                                                         type="submit" role="button">
                                                         Checkout
                                                     </button>
@@ -173,14 +189,14 @@
                                         <tr>
                                             <td colspan="2">
                                                 <div class="alert alert-warning" role="alert">
-                                                    You must have meals in cart and logged in in order to checkout !
+                                                    You must have products in cart and logged in to complete your order !
                                                 </div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
                                                 <div class="d-grid gap-2">
-                                                    <button class="btn btn-lg " style="background-color:#fec45b"
+                                                    <button class="btn btn-lg  " style="background-color:#b78d65; color:white"
                                                         type="submit" role="button" disabled>
                                                         checkout
                                                     </button>

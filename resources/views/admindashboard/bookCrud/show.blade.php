@@ -41,7 +41,7 @@
                 <div class="row">
                     <div class="col-12">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Service Name :{{ $bookService->service->name }}</li>
+                        <li class="list-group-item">Service Name :{{ $bookService->service->service_name }}</li>
                         <li class="list-group-item">Worker Name :{{ $bookService->worker->name }}</li>
                         <li class="list-group-item">Booking Date :{{ $bookService->booking_date }}</li>
                         <li class="list-group-item">User Name :{{ $bookService->user->name }}</li>

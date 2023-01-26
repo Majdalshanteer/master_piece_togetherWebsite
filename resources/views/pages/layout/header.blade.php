@@ -81,7 +81,7 @@
                 <a href="about" class="nav-item nav-link">About</a>
                 <a href="services" class="nav-item nav-link">Services</a>
                 <a href="workers" class="nav-item nav-link">Workers</a>
-{{-- 
+{{--
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu border-0 m-0">
@@ -96,11 +96,10 @@
                 </div> --}}
                 <a href="contact" class="nav-item nav-link">Contact</a>
             </div>
-            <a class="position-relative" href="{{ route('cart.index') }}">
-                        <i class="bi bi-bag-fill fs-2 text-gradient"></i>
-
-                        <span
+            <a class="position-relative mx-3" href="{{ route('cart.index') }}">
+                   <span
                             class="
+
                             position-absolute
                             top-0
                             start-100
@@ -115,12 +114,25 @@
                                 0
                             @endif
 
-                        </span>
-                    </a>
-            @if (Auth::check())
+                        </span> <i style="font-size: 28px" class="bi bi-cart3"></i>
 
+
+                    </a>
+                    @if (Auth::check())
+            @if (Auth::user()->type == 'User')
           <a href="profile" class="btn btn-primary py-2 px-4 d-none d-lg-block">Hello &nbsp;{{Auth::user()->name}}
         </a>
+        @elseif  (Auth::user()->type == 'Admin')
+        <a href="adminDashboard" class="btn btn-primary py-2 px-4 d-none d-lg-block">Dashboard
+        </a>
+@else
+<a href="workerDash" class="btn btn-primary py-2 px-4 d-none d-lg-block">Dashboard
+</a>
+@endif
+@endif
+
+
+        @if (Auth::check())
         <a class="nav-link"  href="{{ route('logout') }}"
         onclick="event.preventDefault();
          document.getElementById('logout-form').submit();"><b>

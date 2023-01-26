@@ -2,7 +2,6 @@
        @extends('admindashboard.layouts.master')
        @section('content')
 
-
         <div class="page-wrapper">
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
@@ -93,6 +92,9 @@
                                         <p>{{ $message }}</p>
                                     </div>
                                 @endif
+       @foreach($services as $service)
+       {{$service->name}}
+       @endforeach
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>

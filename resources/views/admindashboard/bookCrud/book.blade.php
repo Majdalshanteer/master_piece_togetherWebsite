@@ -103,6 +103,7 @@
                                                 <th>User Name</th>
                                                 <th> Location</th>
                                                 <th> Price</th>
+                                                <th> Status</th>
                                                 <th>Action </th>
 
 
@@ -117,7 +118,7 @@
                                             <tr>
                                                 <td><span class="badge badge-light-warning">{{ $bookService->id }}</span></td>
 
-                                                <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $bookService->service->name }}</a></td>
+                                                <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $bookService->service->service_name }}</a></td>
 
                                                 <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $bookService->worker->name }}</a></td>
                                                 <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $bookService->booking_date }}</a></td>
@@ -127,6 +128,24 @@
                                                 <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $bookService->location }}</a></td>
 
                                                 <td><a href="javascript:void(0)" class="font-weight-medium link">{{ $bookService->total_price }}</a></td>
+                                                <td><a href="javascript:void(0)" class="font-weight-medium link">
+                                                    @if( $bookService->status == 'Pending')
+                                                    <span class="badge bg-warning font-12 text-white
+                                                    font-weight-medium badge-pill ml-2 d-md-none d-lg-block">{{ $bookService->status}}
+                                               </span>
+                                               @elseif($bookService->status == 'confirm')
+                                               <span class="badge bg-info font-12 text-white
+                                               font-weight-medium badge-pill ml-2 d-md-none d-lg-block">{{ $bookService->status}}
+                                          </span>
+                                               @elseif($bookService->status == 'completed')
+                                               <span class="badge bg-success font-12 text-white
+                                               font-weight-medium badge-pill ml-2 d-md-none d-lg-block">{{ $bookService->status}}
+                                          </span>
+                                          @else
+                                          <span class="badge bg-danger font-12 text-white
+                                          font-weight-medium badge-pill ml-2 d-md-none d-lg-block">{{ $bookService->status}}
+                                     </span>
+                                     @endif</a></td>
 
 
 

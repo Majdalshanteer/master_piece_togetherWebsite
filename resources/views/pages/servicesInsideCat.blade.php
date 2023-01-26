@@ -45,7 +45,7 @@
 </div>
                     <hr>
                     <div class="card-body">
-                      <a href="{{ route('product.show', $service->id) }}"><h5 class="card-title textHo">{{ $service->name }}</h5></a>
+                      <a href="{{ route('product.show', $service->id) }}"><h5 class="card-title textHo">{{ $service->service_name }}</h5></a>
                       <p class="card-text">Price: {{ $service->price }} JD</p>
                       <form action="{{route('AddToCart')}}" method="post" class="m-2" >
                         @csrf
@@ -87,7 +87,7 @@
                                     height="180px" alt="Icon">
                             </div>
                             {{ $service->id }}
-                            <h3 class="mb-3">{{ $service->name }}</h3>
+                            <h3 class="mb-3">{{ $service->service_name }}</h3>
                             @if ($service->type =="book_unit")
                                 <h3 class="mb-3">{{ $service->price }} JD</h3>
                             @else

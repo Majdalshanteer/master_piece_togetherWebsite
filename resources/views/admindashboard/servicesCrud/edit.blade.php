@@ -59,7 +59,7 @@
                                 <div class="form-group mb-4">
                                 <div class="form-group">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="col-md-3" name="name" value="{{ $service->name }}">
+                                    <input type="text" class="form-control" placeholder="col-md-3" name="service_name" value="{{ $service->service_name }}">
                                 </div>
                             </div>
                         </div>
