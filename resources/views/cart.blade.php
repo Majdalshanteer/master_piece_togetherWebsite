@@ -32,6 +32,7 @@
         </div>
     </div>
     <main class="page">
+<h1 class="mt-5 text-center">jghhkhk</h1>
         <section class="shopping-cart dark pt-0 ">
 
             <div class="container ">
@@ -125,7 +126,9 @@
 
                                                     </tr>
                                                 @endforeach
+
                                             @endif
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -134,16 +137,16 @@
 
                         <div class="col-md-12 col-lg-4">
                             <div class="summary">
-                                <h3>Summary</h3>
+                                <h3>Order Details</h3>
                                 <form action="{{ route('checkout') }}" method="POST">
                                     @csrf
-                                    <div class="summary-item"><span class="text">Subtotal</span><span class="price">
+                                    {{-- <div class="summary-item"><span class="text">Subtotal</span><span class="price">
                                             @if ($price !== 0)
                                                 {{ $price }} JD
                                             @else
                                                 0
                                             @endif
-                                        </span></div>
+                                        </span></div> --}}
 
                                     <div class="summary-item"><span class="text">Total</span><span class="price">
                                             @if ($price !== 0)
@@ -154,11 +157,11 @@
                                         </span></div>
 
                                     <div class="summary-item"><br><span class="text">Note :
-                                            <textarea class="form-control" placeholder="" id="floatingTextarea3" name="address" required></textarea>
+                                            <textarea class="form-control" placeholder=""  id="floatingTextarea3" name="address" ></textarea>
                                         </span><span class="price">
                                         </span><br></div>
                                     <div class="summary-item"><br><span class="text">Address :
-                                            <textarea class="form-control" placeholder="" id="floatingTextarea2" name="note"></textarea>
+                                            <textarea class="form-control"   placeholder="" id="floatingTextarea2" name="note"></textarea>
                                         </span><span class="price"> </span>
                                         <br>
                                     </div>
@@ -171,7 +174,7 @@
                                     </tr>
 
 
-                                    @if (session()->has('order.services'))
+                                    @if (session()->has('order.services') && Auth::check() )
                                         <tr>
                                             <td colspan="2">
                                                 <input type="hidden" name="service_id" value="{{ $service->id }}">

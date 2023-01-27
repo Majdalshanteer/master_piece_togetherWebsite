@@ -8,7 +8,7 @@ class ServicesCrudController extends Controller
 {
     public function index()
     {
-        $services = Service::all();
+        $services = Service::simplePaginate(6);
 
         return view('admindashboard.servicesCrud.services', compact('services'));
 

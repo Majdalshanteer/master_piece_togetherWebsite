@@ -18,10 +18,16 @@ class NormalUserController extends Controller
     public function index()
     {
         $orders = order_detail::where('user_id','=',Auth::user()->id)->get();
-        
+        $orderdetails = DB::table('order_datails')
+            ->join('order_items', 'order_datails.id', '=', 'order_items.order_datails_id')
+            ->join('services', 'order_items.service_id', '=', 'services.id')
+            ->select('order_datails.*', 'order_items.*', 'services.*')
+            ->get();
+           dd($orderdetails);
         return view('myaccount', [
             'user' => Auth::user(),
-            'orders'=>$orders
+            'orders'=>$orders,
+            'orderdetails' =>$orderdetails
         ]);
     }
 
@@ -66,7 +72,7 @@ class NormalUserController extends Controller
     public function edit($id)
     {
         $user = User::where('id','=',$id)->get()->first();
-        
+
         return view('editaccount',[
             'user'=>$user
         ]);
@@ -85,7 +91,7 @@ class NormalUserController extends Controller
         $user->name= $request->name;
         $user->email = $request->email;
         $user->phone = $request->phone;
-        
+
 
         if ($image = $request->file('image')) {
             $destinationPath = 'images/';
@@ -99,7 +105,7 @@ class NormalUserController extends Controller
 
 
         $user->update($input);
-     
+
         return redirect()->route('myaccount.index');
     }
 

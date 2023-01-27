@@ -2,15 +2,15 @@
 
 
 @section('content')
-@if ($errors->any())
-<div class="alert alert-danger" style="text-align: left">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+    @if ($errors->any())
+        <div class="alert alert-danger" style="text-align: left">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     @if (Session::has('success'))
         <div class="alert alert-success">
             {{ Session::get('success') }}
@@ -114,6 +114,7 @@
                                 </div>
                                 <form action="{{ route('AddToCart') }}" method="post" class="m-2">
                                     @csrf
+                                    @if ($service->type == 'cart' )
                                     <div class="col-auto">
                                         <div class="quantity">
                                             <span class="qty-minus"
@@ -127,13 +128,14 @@
                                         </div>
 
                                     </div>
+
                             </div>
                             <br>
                             <div class="row pb-3">
                                 <div>
 
 
-                                    @if ($service->type == 'cart')
+
                                         <button class="btn btn-primary" type="submit" class="btn btn-success btn-lg"
                                             name="submit" value="addtocard">Add To Cart</button>
                                     @else
@@ -219,45 +221,44 @@
                         @csrf
                         @if ($service->type == 'book_unit')
                             <label for="total_price" class="col-form-label">Price:</label>
-                            <input readonly name="total_price" class="pri" id="price" value="{{ $service->price }}" >
-                       <input type="text" hidden name="quantity" value="1" id="quantity">
+                            <input readonly name="total_price" class="pri" id="price"
+                                value="{{ $service->price }}">
+                            <input type="text" hidden name="quantity" value="1" id="quantity">
                         @endif
 
                         @if ($service->type == 'book_hr')
                             <label for="quantity" class="col-form-label">Hours:</label>
-                            <input type="text" name="quantity" id="quantity" class="example" onkeyup="Calculate()">
+                            <input type="text" name="quantity" id="quantity" class="example" value="1" onkeyup="Calculate()">
                         @endif
-                             <label for="message-text" class="col-form-label">Select a worker:</label>
+                        <label for="message-text" class="col-form-label">Select a worker:</label>
                         <select name="worker_id" class="col-form-label">
 
                             @foreach ($service->users as $user)
                                 <option value={{ $user->id }}>{{ $user->name }}</option>
-
+  @endforeach
                         </select>
-                        @endforeach
+
 
 
                         <label for="message-text" class="col-form-label">Date:</label>
-                        <input type="date" name="booking_date"
-                        id="datepicker" >
+                        <input type="date" name="booking_date" id="datepicker">
                         <small></small>
-                    <small style="color: brown">off-days are Fri & Sat</small>
+                        <small style="color: brown">off-days are Fri & Sat</small>
 
 
-                        <label for="appt">Time :</label>
-                        <input type="time" id="appt" name="appt"
-                               min="09:00" max="18:00" required>
+                        <label for="booking_time">Time :</label>
+                        <input type="time" id="appt" name="booking_time" min="09:00" max="18:00" required>
                         <small></small>
                         <small style="color: brown">Work hours are 9am to 6pm</small>
 
 
 
-                            <input type="hidden"  class="pri" id="price"
-                            value="{{ $service->price }}">
+                        <input type="hidden" class="pri" id="price" value="{{ $service->price }}">
 
                         @if ($service->type == 'book_hr')
                             <label for="total_price" class="col-form-label">Total Price:</label>
-                            <input type="text" name="total_price"  value="{{ $service->price }}" id="total_price" class="total"  readonly>
+                            <input type="text" name="total_price" value="{{ $service->price }}" id="total_price"
+                                class="total" readonly>
                         @endif
 
                         <hr>
@@ -313,43 +314,41 @@
             return document.getElementById("total_price").value = totalPrice;
         }
 
-// function date(){
+        // function date(){
 
 
-//         var today = new Date();
-// var dd = String(today.getDate()).padStart(2, '0');
-// var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-// var yyyy = today.getFullYear();
+        //         var today = new Date();
+        // var dd = String(today.getDate()).padStart(2, '0');
+        // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        // var yyyy = today.getFullYear();
 
-// today = yyyy + '-' + mm + '-' + dd;
-// return document.getElementById("datepicker").min = today;
-// }
-
-
+        // today = yyyy + '-' + mm + '-' + dd;
+        // return document.getElementById("datepicker").min = today;
+        // }
 
 
-const datepicker = document.getElementById("datepicker");
-const today = new Date();
-const dd = String(today.getDate()).padStart(2, '0');
-const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-const yyyy = today.getFullYear();
-const minDate = yyyy + '-' + mm + '-' + dd;
-
-datepicker.min = minDate;
-
-datepicker.addEventListener("change", function() {
-    const selectedDate = new Date(this.value);
-    const dayOfWeek = selectedDate.getUTCDay();
-
-    if (dayOfWeek === 5 || dayOfWeek === 6) {
-        this.setCustomValidity("You cannot select weekends.");
-    } else if(selectedDate < today){
-        this.setCustomValidity("You cannot select today's date.");
-    } else {
-        this.setCustomValidity("");
-    }
-});
 
 
+        const datepicker = document.getElementById("datepicker");
+        const today = new Date();
+        const dd = String(today.getDate()).padStart(2, '0');
+        const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        const yyyy = today.getFullYear();
+        const minDate = yyyy + '-' + mm + '-' + dd;
+
+        datepicker.min = minDate;
+
+        datepicker.addEventListener("change", function() {
+            const selectedDate = new Date(this.value);
+            const dayOfWeek = selectedDate.getUTCDay();
+
+            if (dayOfWeek === 5 || dayOfWeek === 6) {
+                this.setCustomValidity("You cannot select weekends.");
+            } else if (selectedDate < today) {
+                this.setCustomValidity("You cannot select today's date.");
+            } else {
+                this.setCustomValidity("");
+            }
+        });
     </script>
 @endsection

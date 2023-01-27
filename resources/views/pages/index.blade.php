@@ -532,13 +532,15 @@
                 @foreach ($reviews as $review)
                  <div class="testimonial-item text-center" data-dot="<img class='img-fluid' src='images/{{$review->user->image}}' alt=''>">
                     <p class="fs-5">{{$review->comment}}</p>
-                    <h3>{{$review->user->name}}</h3>
+
                     <span class="text-primary">
                         @for($i=1; $i<=$review->rate; $i++)
                         <span><i class="fa fa-star text-warning"></i></span>
                         @endfor
 
                     </span>
+                 
+                    <h3>{{$review->user->name}}</h3>
                 </div>
                  @endforeach
 

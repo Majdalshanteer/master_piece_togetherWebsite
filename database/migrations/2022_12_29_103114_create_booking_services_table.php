@@ -21,12 +21,14 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->string('quantity');
             $table->decimal('total_price');
-            $table->datetime('booking_date');
+            $table->date('booking_date');
+            $table->time('booking_time');
+
             $table->foreignId('worker_id')->nullable()->constrained('users')->onUpdate('cascade')
             ->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->string('name');
+            $table->string('service_name');
             $table->string('email');
             $table->string('phone');
             $table->string('location');

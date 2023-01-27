@@ -80,6 +80,9 @@
     });
 
 
+
+
+
 })(jQuery);
 
 
@@ -169,8 +172,6 @@ $("#clear").click(function () {
   $(".rated").removeClass("rated");
   updateDOM();
 });
-
-
 
 
 

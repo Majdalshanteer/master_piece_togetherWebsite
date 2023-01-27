@@ -28,7 +28,6 @@ use App\Http\Controllers\BookingWorkerController;
 use App\Http\Controllers\TopRatedController;
 use App\Http\Controllers\WebsiteRatingAdminController;
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -115,6 +114,7 @@ Route::post('Booking/create/{service_id}',[BookingController::class, 'create'])-
 Route::post('Rating/create/{worker_id}',[RatingController::class, 'create'])->name('Rating');
 // Route::get('Rating/index/{worker_id}',[RatingController::class, 'index'])->name('Rating');
 // Route::get('Rating/{worker_id}',[RatingController::class, 'show'])->name('show');;
+
 // Route::post('/booking/create/{product_id}', [bookingController::class, 'Create'])->name('createBooking');
 
 
@@ -132,7 +132,7 @@ Route::resource('product', singleProductController::class);
 // Route::get('/product/{service_id}', 'singleProductController@show');
 Route::resource('workers', WorkersController::class);
 Route::resource('/profile', ProfileController::class);
-
+Route::get('profile/{id}/show/','ProfileController@show');
 
 //contact form
 // Route::resource('/con', ContactController::class);

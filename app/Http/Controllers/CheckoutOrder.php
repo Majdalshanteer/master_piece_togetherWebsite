@@ -17,6 +17,12 @@ class CheckoutOrder extends Controller
      */
     public function __invoke(Request $request)
     {
+        $request->validate([
+            'note' => 'required',
+            'address' => 'required',
+
+        ]);
+        
         $user_id = Auth::user()->id;
         $total = $request->total;
         $note = $request->note;

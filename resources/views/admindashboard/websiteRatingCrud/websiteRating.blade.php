@@ -85,7 +85,7 @@
                                     </div>
                                     <!-- Column -->
                                 </div>
-                                <a href="{{route('connectService.create')}}"><button class="btn btn-info">Add Service to Worker</button></a>
+                               
                                 <br>
                                 <div class="table-responsive">
                                     @if ($message = Session::get('success'))
@@ -184,7 +184,8 @@
                                     </table>
 
                                     <ul class="pagination float-right">
-                                        <li class="page-item disabled">
+                                        {{ $reviews->links() }}
+                                        {{-- <li class="page-item disabled">
                                             <a class="page-link" href="#" tabindex="-1">Previous</a>
                                         </li>
                                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -194,7 +195,7 @@
                                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                                         <li class="page-item">
                                             <a class="page-link" href="#">Next</a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </div>

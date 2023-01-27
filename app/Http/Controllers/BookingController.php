@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class BookingController extends Controller
 {
 public function index(){
-    $bookServices = BookingService::all();
+    $bookServices = BookingService::simplePaginate(6);
 
     return view('admindashboard.bookCrud.book', compact('bookServices'));
 }

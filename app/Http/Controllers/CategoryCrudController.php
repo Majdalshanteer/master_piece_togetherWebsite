@@ -9,7 +9,7 @@ class CategoryCrudController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::simplePaginate(6);
 
         return view('admindashboard.categoriesCrud.categories', compact('categories'));
 
