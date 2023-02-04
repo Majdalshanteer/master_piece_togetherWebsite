@@ -9,25 +9,17 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-7 align-self-center">
-                <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Form Input Grid</h4>
+                <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Edit Services</h4>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-0">
-                            <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-                            <li class="breadcrumb-item text-muted active" aria-current="page">Library</li>
+                            <li class="breadcrumb-item"><a href="index.html" class="text-muted">Services</a></li>
+                            <li class="breadcrumb-item text-muted active" aria-current="page">Edit</li>
                         </ol>
                     </nav>
                 </div>
             </div>
-            <div class="col-5 align-self-center">
-                <div class="customize-input float-right">
-                    <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                        <option selected>Aug 19</option>
-                        <option value="1">July 19</option>
-                        <option value="2">Jun 19</option>
-                    </select>
-                </div>
-            </div>
+
         </div>
     </div>
     @if ($errors->any())
@@ -46,7 +38,6 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Edit service</h4>
                 <form action="{{ route('servicesCrud.update', $service->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
     @method('PUT')

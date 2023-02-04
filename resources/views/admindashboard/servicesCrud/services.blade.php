@@ -10,25 +10,17 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Users</h4>
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Services</h4>
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html" class="text-muted">Apps</a></li>
-                                    <li class="breadcrumb-item text-muted active" aria-current="page">Users</li>
+                                    <li class="breadcrumb-item"><a href="index.html" class="text-muted">Dashboard</a></li>
+                                    <li class="breadcrumb-item text-muted active" aria-current="page">Services</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
-                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                                <option selected>Aug 19</option>
-                                <option value="1">July 19</option>
-                                <option value="2">Jun 19</option>
-                            </select>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -85,14 +77,33 @@
                                     </div>
                                     <!-- Column -->
                                 </div>
-                                <a href="{{route('servicesCrud.create')}}"><button class="btn btn-info">Add Service</button></a>
-                                <br>
-                                <div class="table-responsive">
+                                <a href="{{route('servicesCrud.create')}}"><button class="btn btn-info mb-2">
+
+                                    Add Service</button></a>
+
+                                <div class="table-responsive mt-2">
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
                                     </div>
                                 @endif
+
+                                <form method="GET">
+                                    <div class="input-group mb-3">
+                                      <input
+                                        type="text"
+                                        name="search"
+                                        value="{{ request()->get('search') }}"
+                                        class="form-control"
+                                        placeholder="Search..."
+                                        aria-label="Search"
+                                        aria-describedby="button-addon2">
+                                      <button class="btn btn-success" type="submit" id="button-addon2">Search</button>
+                                    </div>
+                                </form>
+
+
+
                                     <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                         <thead>
                                             <tr>
@@ -147,17 +158,7 @@
 
                                     <ul class="pagination float-right">
                                         {{ $services->links() }}
-                                        {{-- <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li> --}}
+
                                     </ul>
                                 </div>
                             </div>

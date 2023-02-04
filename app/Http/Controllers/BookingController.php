@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class BookingController extends Controller
 {
 public function index(){
-    $bookServices = BookingService::simplePaginate(6);
+    $bookServices = BookingService::paginate(6);
 
     return view('admindashboard.bookCrud.book', compact('bookServices'));
 }
@@ -23,9 +23,11 @@ public function index(){
 
         $request->validate([
             'quantity' => 'required',
-            'booking_date' => 'required|unique:booking_services',
+            'booking_date' => 'required',
+            'booking_time'=>'required',
             'worker_id' => 'required',
             'location'  => 'required',
+            'note'  => 'required',
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',

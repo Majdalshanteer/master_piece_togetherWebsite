@@ -4,13 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
 
 class Service extends Model
 {
-    use HasFactory;
+    use HasFactory, Searchable;
 
     protected $fillable = [
-        'name',
+
+        'service_name',
         'type',
         'image',
         'image2',
@@ -21,9 +23,21 @@ class Service extends Model
         'description',
 
 
-
-
     ];
+
+
+    public function toSearchableArray()
+    {
+        return [
+            'service_name' => $this->service_name,
+            'Price' => $this->price,
+            'type' => $this->type,
+
+        ];
+    }
+
+
+
 
     public function category()
     {

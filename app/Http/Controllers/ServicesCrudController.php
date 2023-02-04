@@ -4,11 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Service;
+
 class ServicesCrudController extends Controller
 {
-    public function index()
+
+    public function index(Request $request)
     {
-        $services = Service::simplePaginate(6);
+
+        if($request->filled('search')){
+            $services =Service ::search($request->search)->paginate(100);
+        }else{
+
+            $services = Service::paginate(6);
+        }
+
+
 
         return view('admindashboard.servicesCrud.services', compact('services'));
 
@@ -26,7 +36,7 @@ class ServicesCrudController extends Controller
     {
         $service = Service::where('id',$id)->first();
         $request->validate([
-            'name' => 'required',
+            'service_name' => 'required',
 
 
         ]);
@@ -86,7 +96,7 @@ class ServicesCrudController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'service_name' => 'required',
             'category_id' => 'required',
 
 

@@ -99,7 +99,7 @@
 
                             </div>
 
-<div id="cartSection" style="display: none">
+<div id="cartSection">
 
     <div class="col-12"  id="description">
                                 <div class="form-group has-icon-left">

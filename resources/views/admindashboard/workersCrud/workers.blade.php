@@ -13,21 +13,13 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html" class="text-muted">Apps</a></li>
+                                    <li class="breadcrumb-item"><a href="index.html" class="text-muted">Dashboard</a></li>
                                     <li class="breadcrumb-item text-muted active" aria-current="page">Workers</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
-                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                                <option selected>Aug 19</option>
-                                <option value="1">July 19</option>
-                                <option value="2">Jun 19</option>
-                            </select>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -86,24 +78,40 @@
                                 </div>
                                 <a href="{{route('workersinfo.create')}}"><button class="btn btn-info">Add Worker</button></a>
                                <br>
-                                <div class="table-responsive">
+                                <div class="table-responsive mt-2">
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
                                     </div>
                                 @endif
+
+                                <form method="GET">
+                                    <div class="input-group mb-3">
+                                      <input
+                                        type="text"
+                                        name="search"
+                                        value="{{ request()->get('search') }}"
+                                        class="form-control"
+                                        placeholder="Search..."
+                                        aria-label="Search"
+                                        aria-describedby="button-addon2">
+                                      <button class="btn btn-success" type="submit" id="button-addon2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                      </svg></button>
+                                    </div>
+                                </form>
        @foreach($services as $service)
        {{$service->name}}
        @endforeach
-                                    <table id="zero_config" class="table table-striped table-bordered no-wrap">
+                                    <table id="zero_config" class="table table-striped table-bordered no-wrap ">
                                         <thead>
                                             <tr>
                                                 <th>#</th>
-                                                <th>User Name</th>
+                                                <th>Name</th>
                                                 <th>image</th>
-                                                <th>User Email</th>
-                                                <th>User Phone</th>
-                                                <th>User Type</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Type</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -138,8 +146,12 @@
 
                                     @endforeach
                                     </table>
-
                                     <ul class="pagination float-right">
+                                        {{ $workers->links() }}
+
+                                    </ul>
+                                    <ul class="pagination float-right">
+
                                         {{-- <li class="page-item disabled">
                                             <a class="page-link" href="#" tabindex="-1">Previous</a>
                                         </li>

@@ -139,8 +139,10 @@
                                         <button class="btn btn-primary" type="submit" class="btn btn-success btn-lg"
                                             name="submit" value="addtocard">Add To Cart</button>
                                     @else
-                                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModal{{ $service->id }}">Book A Service </button>
+                                        {{-- <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#exampleModal{{ $service->id }}">Book A Service </button> --}}
+<br>
+                                            <a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle{{ $service->id }}" role="button">Book A Service</a>
                                     @endif
                                 </div>
                                 <input type="hidden" value="{{ $service->id }}" name="serviceId">
@@ -178,18 +180,18 @@
 
 
 
-    <div class="modal fade" id="exampleModal{{ $service->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
 
-                    <h1 style="margin-right:20px"class="modal-title fs-5" id="exampleModalLabel">Step 1</h1>
 
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
-                </div>
-                <div class="modal-body">
+
+<div class="modal fade" id="exampleModalToggle{{ $service->id }}" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel">Book information</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
 
                     @if (Auth::check())
                     @else
@@ -214,20 +216,18 @@
                         </div>
                     @endif
                     <form class=""
-                        method="POST"style="display: grid ; grid-template-columns: 40% 50%;row-gap: 10px; text-align:left ;"
+                        method="POST" style="display: grid ; grid-template-columns: 40% 50%;row-gap: 10px; text-align:left ;"
                         action="{{ route('Booking', ['service_id' => $service['id']]) }}">
                         <input type="hidden" value="{{ $service->id }}" name="service_id">
 
                         @csrf
-                        @if ($service->type == 'book_unit')
-                            <label for="total_price" class="col-form-label">Price:</label>
-                            <input readonly name="total_price" class="pri" id="price"
-                                value="{{ $service->price }}">
-                            <input type="text" hidden name="quantity" value="1" id="quantity">
+                        @if ($service->type == 'book_hr' )
+                            <label for="quantity" class="col-form-label">Hours:</label>
+                            <input type="text" name="quantity" id="quantity" class="example" value="1" onkeyup="Calculate()">
                         @endif
 
-                        @if ($service->type == 'book_hr')
-                            <label for="quantity" class="col-form-label">Hours:</label>
+                        @if ($service->type == 'book_unit' )
+                            <label for="quantity" class="col-form-label">Persons:</label>
                             <input type="text" name="quantity" id="quantity" class="example" value="1" onkeyup="Calculate()">
                         @endif
                         <label for="message-text" class="col-form-label">Select a worker:</label>
@@ -247,108 +247,161 @@
 
 
                         <label for="booking_time">Time :</label>
-                        <input type="time" id="appt" name="booking_time" min="09:00" max="18:00" required>
+                        <input type="time" id="appt" name="booking_time" min="09:00" max="18:00" >
                         <small></small>
                         <small style="color: brown">Work hours are 9am to 6pm</small>
 
 
+                        <label for="note" class="col-form-label">Note :</label>
+                        <textarea type="text" name="note" id="note"></textarea>
 
                         <input type="hidden" class="pri" id="price" value="{{ $service->price }}">
 
-                        @if ($service->type == 'book_hr')
+                        @if ($service->type == 'book_hr'||$service->type == 'book_unit')
                             <label for="total_price" class="col-form-label">Total Price:</label>
                             <input type="text" name="total_price" value="{{ $service->price }}" id="total_price"
                                 class="total" readonly>
                         @endif
 
-                        <hr>
-                        <hr>
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Step 2</h1>
-                        <h1></h1>
+
+
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" type="button"  data-bs-dismiss="modal" aria-label="Close">Close</button>
+            @if (Auth::check())
+          <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Next Step</button>
+        @else
+        <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal" disabled>Next Step</button>
+
+        @endif
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Payment informatiom</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" >
+      <div class="col-50">
+                        <div style="display: grid ; grid-template-columns: 30% 60%;row-gap: 10px; text-align:left ;">
                         @if (Auth::check())
-                            <input type="text" name="user_id" hidden value="{{ Auth::user()->id }}">
-                            <label for="name" class="col-form-label">Name :</label>
-                            <input type="text" name="name" id="name" value="{{ Auth::user()->name }}">
-                            <label for="email" class="col-form-label">Email :</label>
-                            <input type="text" name="email" id="email" value="{{ Auth::user()->email }}">
-                            <label for="phone" class="col-form-label">Phone :</label>
-                            <input type="text" name="phone" id="phone" value="{{ Auth::user()->phone }}">
-                            <label for="location" class="col-form-label">Location :</label>
-                            <input type="text" name="location" id="location">
-                        @else
-                            <label for="name" class="col-form-label">Name :</label>
-                            <input type="text" name="name" id="name">
-                            <label for="email" class="col-form-label">Email :</label>
-                            <input type="text" name="email" id="email">
-                            <label for="phone" class="col-form-label">Phone :</label>
-                            <input type="text" name="phone" id="phone">
-                            <label for="location" class="col-form-label">Location :</label>
-                            <input type="text" name="location" id="location">
-                        @endif
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    @if (Auth::check())
-                        <button id="book" type="submit" class="btn btn-primary">book</button>
+                        <input type="text" name="user_id" hidden value="{{ Auth::user()->id }}">
+                        <label for="name" class="col-form-label">Name :</label>
+                        <input type="text" name="name" id="name" value="{{ Auth::user()->name }}">
+                        <label for="email" class="col-form-label">Email :</label>
+                        <input type="text" name="email" id="email" value="{{ Auth::user()->email }}">
+                        <label for="phone" class="col-form-label">Phone :</label>
+                        <input type="text" name="phone" id="phone" value="{{ Auth::user()->phone }}">
+                        <label for="location" class="col-form-label">Location :</label>
+                        <input type="text" name="location" id="location">
                     @else
-                        <button id="book" type="submit" class="btn btn-primary" disabled>book</button>
+                        <label for="name" class="col-form-label">Name :</label>
+                        <input type="text" name="name" id="name">
+                        <label for="email" class="col-form-label">Email :</label>
+                        <input type="text" name="email" id="email">
+                        <label for="phone" class="col-form-label">Phone :</label>
+                        <input type="text" name="phone" id="phone">
+                        <label for="location" class="col-form-label">Location :</label>
+                        <input type="text" name="location" id="location">
                     @endif
                 </div>
-                </form>
+                <hr>
+        <div class="row">
+            <div class="col-75">
+              <div class="contain">
+
+
+                  <div class="row">
+
+                      <label class="lab" for="ccnum">Credit card number</label>
+                      <input class="inp" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
+                      <label class="lab" for="expmonth">Exp Month</label>
+                      <input class="inp" type="text" id="expmonth" name="expmonth" placeholder="MM" required>
+                      <div class="row">
+                        <div class="col-50">
+                          <label class="lab" for="expyear">Exp Year</label>
+                          <input class="inp" type="text" id="expyear" name="expyear" placeholder="YYYY" required>
+                        </div>
+                        <div class="col-50">
+                          <label class="lab" for="cvv">CVV</label>
+                          <input class="inp" type="text" id="cvv" name="cvv" placeholder="123" required>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+              </div>
             </div>
+
+          </div>
         </div>
+        <div class="modal-footer">
+            <button class="btn btn-secondary" type="button"  data-bs-dismiss="modal" aria-label="Close">Close</button>
+            {{-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> --}}
+            @if (Auth::check())
+                <button id="book" type="submit" class="btn btn-primary">book</button>
+            @else
+                <button id="book" type="submit" class="btn btn-primary" disabled>book</button>
+            @endif
+        </div>
+      </div>
+    </form>
     </div>
-
-    <script>
-        function Calculate() {
+  </div>
 
 
-            var quantity = document.getElementById("quantity").value;
-            var price = document.getElementById("price").value;
-            var totalPrice = quantity * price;
-            console.log(price);
-            console.log(quantity);
-            console.log(totalPrice);
-            return document.getElementById("total_price").value = totalPrice;
+
+
+
+
+  <script>
+    function Calculate() {
+
+
+        var quantity = document.getElementById("quantity").value;
+        var price = document.getElementById("price").value;
+        var totalPrice = quantity * price;
+        console.log(price);
+        console.log(quantity);
+        console.log(totalPrice);
+        return document.getElementById("total_price").value = totalPrice;
+    }
+
+
+
+
+
+
+    const datepicker = document.getElementById("datepicker");
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    const yyyy = today.getFullYear();
+    const minDate = yyyy + '-' + mm + '-' + dd;
+
+    datepicker.min = minDate;
+
+    datepicker.addEventListener("change", function() {
+        const selectedDate = new Date(this.value);
+        const dayOfWeek = selectedDate.getUTCDay();
+
+        if (dayOfWeek === 5 || dayOfWeek === 6) {
+            this.setCustomValidity("You cannot select weekends.");
+        } else if (selectedDate < today) {
+            this.setCustomValidity("You cannot select today's date.");
+        } else {
+            this.setCustomValidity("");
         }
-
-        // function date(){
-
-
-        //         var today = new Date();
-        // var dd = String(today.getDate()).padStart(2, '0');
-        // var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        // var yyyy = today.getFullYear();
-
-        // today = yyyy + '-' + mm + '-' + dd;
-        // return document.getElementById("datepicker").min = today;
-        // }
+    });
+</script>
 
 
 
-
-        const datepicker = document.getElementById("datepicker");
-        const today = new Date();
-        const dd = String(today.getDate()).padStart(2, '0');
-        const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        const yyyy = today.getFullYear();
-        const minDate = yyyy + '-' + mm + '-' + dd;
-
-        datepicker.min = minDate;
-
-        datepicker.addEventListener("change", function() {
-            const selectedDate = new Date(this.value);
-            const dayOfWeek = selectedDate.getUTCDay();
-
-            if (dayOfWeek === 5 || dayOfWeek === 6) {
-                this.setCustomValidity("You cannot select weekends.");
-            } else if (selectedDate < today) {
-                this.setCustomValidity("You cannot select today's date.");
-            } else {
-                this.setCustomValidity("");
-            }
-        });
-    </script>
 @endsection

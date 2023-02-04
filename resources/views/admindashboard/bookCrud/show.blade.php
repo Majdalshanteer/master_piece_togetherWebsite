@@ -9,25 +9,17 @@
     <div class="page-breadcrumb">
         <div class="row">
             <div class="col-7 align-self-center">
-                <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Form Input Grid</h4>
+                <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Booking Details</h4>
                 <div class="d-flex align-items-center">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-0">
-                            <li class="breadcrumb-item"><a href="index.html" class="text-muted">Home</a></li>
-                            <li class="breadcrumb-item text-muted active" aria-current="page">Library</li>
+                            <li class="breadcrumb-item"><a href="index.html" class="text-muted">Booking</a></li>
+                            <li class="breadcrumb-item text-muted active" aria-current="page">Show</li>
                         </ol>
                     </nav>
                 </div>
             </div>
-            <div class="col-5 align-self-center">
-                <div class="customize-input float-right">
-                    <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                        <option selected>Aug 19</option>
-                        <option value="1">July 19</option>
-                        <option value="2">Jun 19</option>
-                    </select>
-                </div>
-            </div>
+
         </div>
     </div>
 
@@ -48,7 +40,7 @@
                         <li class="list-group-item">User Phone :{{ $bookService->phone }}</li>
                         <li class="list-group-item">User Email :{{ $bookService->email }}</li>
                         <li class="list-group-item">Total Price :{{ $bookService->total_price }}</li>
-                        <li class="list-group-item">Notes :{{ $bookService->email }}</li>
+                        <li class="list-group-item">Notes :{{ $bookService->note }}</li>
                       </ul>
                 </div>
                 </div>

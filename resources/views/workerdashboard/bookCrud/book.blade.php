@@ -21,13 +21,13 @@
                         </div>
                     </div>
                     <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
+                        {{-- <div class="customize-input float-right">
                             <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
                                 <option selected>Aug 19</option>
                                 <option value="1">July 19</option>
                                 <option value="2">Jun 19</option>
                             </select>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -158,7 +158,9 @@
                                                     <!-- show button -->
                                                     <a href="" class="ms-3 "></a>
                                                     <form style="display: inline-block" method="POST" >
-                                                        <a   href="{{ route('bookingWorker.show', $booking->id) }}">Show
+                                                        <a class="mx-3" href="{{ route('bookingWorker.show', $booking->id) }}"> Show<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="current" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M6 8a.5.5 0 0 0 .5.5h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L12.293 7.5H6.5A.5.5 0 0 0 6 8Zm-2.5 7a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5Z"/>
+                                                          </svg>
                                                          </a>
                                                          <a   href="{{ route('bookingWorker.edit', $booking->id) }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -175,7 +177,8 @@
                                     </table>
 
                                     <ul class="pagination float-right">
-                                        <li class="page-item disabled">
+                                        {{-- {{$bookings->links()}} --}}
+                                        {{-- <li class="page-item disabled">
                                             <a class="page-link" href="#" tabindex="-1">Previous</a>
                                         </li>
                                         <li class="page-item active"><a class="page-link" href="#">1</a></li>
@@ -185,7 +188,7 @@
                                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                                         <li class="page-item">
                                             <a class="page-link" href="#">Next</a>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
                             </div>

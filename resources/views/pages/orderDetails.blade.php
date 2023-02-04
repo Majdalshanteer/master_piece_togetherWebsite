@@ -51,7 +51,7 @@
                         <tbody>
                             @foreach($products as $product)
                              <tr>
-<td>{{ $i++ }} </td>
+<td>{{ ++$i }} </td>
                         <td> <img src="/servicesImages/{{ $product->image }}" alt="book image"
                                 srcset="" style="width:80px;height:90px;"> </td>
                         <td>{{ $product->service_name }} </td>
@@ -75,33 +75,6 @@
         </div>
 
 
-
-{{-- <div   class="container-fluid">
-<div class="row">
-    <div class="col-3"></div>
-    <div class="col-4">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card-title">Order Details</h4>
-                <div class="row">
-                    <div class="col-12">
-
-                        </div>
-
-
-
-
-
-
-                </div>
-                </div>
-
-                    </div><br>
-
-
-            </div>
-        </div>
-    </div> --}}
 </div>
 
 </div>

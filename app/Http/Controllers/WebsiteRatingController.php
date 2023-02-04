@@ -18,7 +18,7 @@ class WebsiteRatingController extends Controller
         ->join('ratings', 'users.id', '=', 'ratings.worker_id')
         ->groupBy('ratings.worker_id')
         ->orderBy('avg_rating', 'desc')
-        ->take(4)
+        ->take(5)
         ->get();
 
 

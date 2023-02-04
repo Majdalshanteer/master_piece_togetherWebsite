@@ -48,6 +48,9 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/WebsiteRating"
                             aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
                                 class="hide-menu">Website Rating</span></a></li>
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/WorkerRating"
+                            aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
+                                class="hide-menu">Worker Rating</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/view-messages"
                             aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
                                 class="hide-menu">Complaints</span></a></li>

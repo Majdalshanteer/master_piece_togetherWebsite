@@ -97,7 +97,7 @@
                                         <label class="mr-sm-2" for="inlineFormCustomSelect">User Type</label>
                                         <select name="type" class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
                                             {{-- <option selected>Choose...</option> --}}
-                                          
+
                                             <option value="Worker"selected>Worker</option>
 
                                         </select>
@@ -114,7 +114,7 @@
                                         <select name="service_id" class="custom-select mr-sm-2" id="inlineFormCustomSelect" >
                                             {{-- <option selected>Choose...</option> --}}
                                                @foreach($services as $service)
-                                               <option value="{{$service->id}}" >{{$service->name}}</option>
+                                               <option value="{{$service->id}}" >{{$service->service_name}}</option>
                                            @endforeach
                                         </select>
                                     </div>

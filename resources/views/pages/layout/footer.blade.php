@@ -19,24 +19,23 @@
                   <h3 class="text-light mb-4">Services</h3>
                   <a class="btn btn-link" href="">Beauty & Personal Care</a>
                   <a class="btn btn-link" href="">Gardening</a>
-                  <a class="btn btn-link" href="">Painting</a>
-                  <a class="btn btn-link" href="">Handmade</a>
-                  <a class="btn btn-link" href="">Cooking</a>
+                  <a class="btn btn-link" href="">Cleaning</a>
+
               </div>
               <div class="col-lg-3 col-md-6">
-                  <h3 class="text-light mb-4">Quick Links</h3>
-                  <a class="btn btn-link" href="">About Us</a>
-                  <a class="btn btn-link" href="">Contact Us</a>
-                  <a class="btn btn-link" href="">Our Services</a>
-                  <a class="btn btn-link" href="">Terms & Condition</a>
-                  <a class="btn btn-link" href="">Support</a>
+                  <h3 class="text-light mb-4">Products</h3>
+                  <a class="btn btn-link" href="">Home Decorations</a>
+                  <a class="btn btn-link" href="">Decorative Pillows</a>
+                  <a class="btn btn-link" href="">Garden Supplies</a>
+
               </div>
               <div class="col-lg-3 col-md-6">
-                  <h3 class="text-light mb-4">Newsletter</h3>
-                  <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
+                  <h3 class="text-light mb-4">Register</h3>
+                  <p>Create an account,it's free.</p>
+
                   <div class="position-relative mx-auto" style="max-width: 400px;">
                       <input class="form-control bg-transparent w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                      <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                      <a href="http://127.0.0.1:8000/register"><button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button></a>
                   </div>
               </div>
           </div>

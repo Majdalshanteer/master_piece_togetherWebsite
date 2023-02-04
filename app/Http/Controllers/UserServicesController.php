@@ -17,7 +17,7 @@ class UserServicesController extends Controller
         ->join('users', 'user_services.user_id', '=', 'users.id')
         ->join('services', 'user_services.service_id', '=', 'services.id')
         ->select('users.*', 'services.*', 'user_services.*')
-        ->get();
+        ->paginate(4);
 
         // dd($userServices);
 

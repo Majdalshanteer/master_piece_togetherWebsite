@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('adminassets/images/favicon.png')}}">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <title>Worker Dashboard</title>
     <!-- Custom CSS -->
 
     <link href="{{asset('adminassets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
@@ -58,7 +58,8 @@
                         <a href="/">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="{{asset('adminassets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
+                                {{-- <img src="{{asset('adminassets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" /> --}}
+                                <img class="me-3" src="{{asset('img/icons/logo.png')}}" height="70px" alt="Icon">
                                 <!-- Light Logo icon -->
                                 <img src="{{asset('adminassets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
                             </b>
@@ -66,6 +67,7 @@
                             <!-- Logo text -->
                             <span class="logo-text">
                                 <!-- dark Logo text -->
+
                                 <img src="{{asset('adminassets/images/logo-text.png')}}" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo text -->
                                 <img src="{{asset('adminassets/images/logo-light-text.png')}}" class="light-logo" alt="homepage" />
@@ -92,7 +94,7 @@
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto ml-3 pl-1">
                         <!-- Notification -->
-                        <li class="nav-item dropdown">
+                        {{-- <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle pl-md-3 position-relative" href="javascript:void(0)"
                                 id="bell" role="button" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
@@ -194,7 +196,7 @@
                                     </select>
                                 </div>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->

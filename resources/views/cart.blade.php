@@ -25,14 +25,14 @@
             <nav aria-label="breadcrumb animated slideInDown">
                 <ol class="breadcrumb text-uppercase mb-0">
                     <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                    <li class="breadcrumb-item text-primary active" aria-current="page">Cart</li>
+
+                    <li class="breadcrumb-item text-primary active" aria-current="page"><b>Cart</b></li>
                 </ol>
             </nav>
         </div>
     </div>
     <main class="page">
-<h1 class="mt-5 text-center">jghhkhk</h1>
+<h1 class="mt-5 text-center"></h1>
         <section class="shopping-cart dark pt-0 ">
 
             <div class="container ">
@@ -157,11 +157,11 @@
                                         </span></div>
 
                                     <div class="summary-item"><br><span class="text">Note :
-                                            <textarea class="form-control" placeholder=""  id="floatingTextarea3" name="address" ></textarea>
+                                            <textarea class="form-control cartInput" placeholder=""  id="floatingTextarea3" name="note" ></textarea>
                                         </span><span class="price">
                                         </span><br></div>
                                     <div class="summary-item"><br><span class="text">Address :
-                                            <textarea class="form-control"   placeholder="" id="floatingTextarea2" name="note"></textarea>
+                                            <textarea class="form-control cartInput"   placeholder="" id="floatingTextarea2" name="address"></textarea>
                                         </span><span class="price"> </span>
                                         <br>
                                     </div>
@@ -175,7 +175,7 @@
 
 
                                     @if (session()->has('order.services') && Auth::check() )
-                                        <tr>
+                                        <tr >
                                             <td colspan="2">
                                                 <input type="hidden" name="service_id" value="{{ $service->id }}">
                                                 <input type="hidden" name="total"

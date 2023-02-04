@@ -38,6 +38,15 @@ public function index()
         return redirect()->back()
                          ->with(['success' => 'Thank you, for rating .']);
 
+                         $request->validate([
+                            'worker_id' => 'required|unique:ratings,worker_id',
+                            'user_id' => 'required|unique:ratings,user_id',
+
+
+
+                        ]);
+
+                        $input = $request->all();
         $rating = new Rating;
         $rating->$user = Auth::user()->id;
         $rating->rate = $request->$rate;

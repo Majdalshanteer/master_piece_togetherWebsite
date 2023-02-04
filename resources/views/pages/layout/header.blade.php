@@ -14,7 +14,7 @@
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Teko:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="{{asset('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Teko:wght@400;500;600&display=swap')}}" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
@@ -51,10 +51,10 @@
                 </div>
             </div>
             <div class="col-lg-5 px-5 text-end">
-                <div class="h-100 d-inline-flex align-items-center py-3 me-2">
+                {{-- <div class="h-100 d-inline-flex align-items-center py-3 me-2">
                     <a class="text-body px-2" href="">Terms</a>
                     <a class="text-body px-2" href="">Privacy</a>
-                </div>
+                </div> --}}
                 <div class="h-100 d-inline-flex align-items-center">
                     <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-facebook-f"></i></a>
                     <a class="btn btn-sm-square btn-outline-body me-1" href=""><i class="fab fa-twitter"></i></a>
@@ -78,9 +78,9 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/" class="nav-item nav-link ">Home</a>
-                <a href="about" class="nav-item nav-link">About</a>
-                <a href="services" class="nav-item nav-link">Services</a>
-                <a href="workers" class="nav-item nav-link">Workers</a>
+                {{-- <a href="/about" class="nav-item nav-link">About</a> --}}
+                <a href="/services" class="nav-item nav-link">Services</a>
+                <a href="/workers" class="nav-item nav-link">Workers</a>
 {{--
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -94,9 +94,9 @@
                     </div>
 
                 </div> --}}
-                <a href="contact" class="nav-item nav-link">Contact</a>
+                <a href="/contact" class="nav-item nav-link">Contact</a>
             </div>
-            <a class="position-relative mx-3" href="{{ route('cart.index') }}">
+            <a style="margin-right: 30px" class="position-relative " href="{{ route('cart.index') }}">
                    <span
                             class="
 
@@ -114,19 +114,21 @@
                                 0
                             @endif
 
-                        </span> <i style="font-size: 28px" class="bi bi-cart3"></i>
+                        </span>
+                        {{-- <i style="font-size: 25px" class="bi bi-bag-plus"></i> --}}
+                        <i style="font-size: 22px" class="bi bi-cart3"></i>
 
 
                     </a>
                     @if (Auth::check())
             @if (Auth::user()->type == 'User')
-          <a href="profile" class="btn btn-primary py-2 px-4 d-none d-lg-block">Hello &nbsp;{{Auth::user()->name}}
+          <a href="/profile" class="btn btn-primary py-2 px-4 d-none d-lg-block">Hello &nbsp;{{Auth::user()->name}}
         </a>
         @elseif  (Auth::user()->type == 'Admin')
-        <a href="adminDashboard" class="btn btn-primary py-2 px-4 d-none d-lg-block">Dashboard
+        <a href="/adminDashboard" class="btn btn-primary py-2 px-4 d-none d-lg-block">Dashboard
         </a>
 @else
-<a href="workerDash" class="btn btn-primary py-2 px-4 d-none d-lg-block">Dashboard
+<a href="/workerDash" class="btn btn-primary py-2 px-4 d-none d-lg-block">Dashboard
 </a>
 @endif
 @endif

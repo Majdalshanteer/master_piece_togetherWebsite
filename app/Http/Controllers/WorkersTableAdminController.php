@@ -10,10 +10,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 class WorkersTableAdminController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $workers = User::all()->where('type', 'Worker');
+        if($request->filled('search')){
+
+            $workers = User::search($request->search)->where('type', 'Worker')->paginate(100);
+            $services = Service::all()->where('type', 'book_unit');
+        }else{
+            $workers = User::where('type', 'Worker')->paginate(4);
         $services = Service::all()->where('type', 'book_unit');
+
+        }
+
         return view('admindashboard.workersCrud.workers', compact('workers','services'));
 
     }

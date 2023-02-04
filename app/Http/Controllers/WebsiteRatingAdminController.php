@@ -8,7 +8,7 @@ class WebsiteRatingAdminController extends Controller
 {
     public function index()
     {
-        $reviews = WebsiteRating::simplePaginate(5);
+        $reviews = WebsiteRating::paginate(5);
 
         return view('admindashboard.websiteRatingCrud.websiteRating', compact('reviews'));
 

@@ -34,6 +34,9 @@
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/servicesCrud"
                             aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
                                 class="hide-menu">Services</span></a></li> --}}
+                        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/workSample"
+                            aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
+                                class="hide-menu"> work Sample</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="/bookingWorker"
                             aria-expanded="false"><i data-feather="feather" class="feather-icon"></i><span
                                 class="hide-menu">Book Services</span></a></li>

@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{asset('adminassets/images/favicon.png')}}">
-    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <title>Admin Dashboard</title>
     <!-- Custom CSS -->
 
     <link href="{{asset('adminassets/extra-libs/c3/c3.min.css')}}" rel="stylesheet">
@@ -58,7 +58,8 @@
                         <a href="/">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="{{asset('adminassets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" />
+                                <img class="me-3" src="{{asset('img/icons/logo.png')}}" height="70px" alt="Icon">
+                                {{-- <img src="{{asset('adminassets/images/logo-icon.png')}}" alt="homepage" class="dark-logo" /> --}}
                                 <!-- Light Logo icon -->
                                 <img src="{{asset('adminassets/images/logo-icon.png')}}" alt="homepage" class="light-logo" />
                             </b>
@@ -203,7 +204,7 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item d-none d-md-block">
+                        {{-- <li class="nav-item d-none d-md-block">
                             <a class="nav-link" href="javascript:void(0)">
                                 <form>
                                     <div class="customize-input">
@@ -213,14 +214,16 @@
                                     </div>
                                 </form>
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                    @if (Auth::check()) <img src="images/{{Auth::user()->image}} " alt="user" class="rounded-circle"
+                                    @if (Auth::check())
+
+                                    <img src="images/{{Auth::user()->image}} " alt="user" class="rounded-circle"
                                   style="width:60px; height:50px">
 
 

@@ -6,9 +6,19 @@ use App\Models\User;
 use Illuminate\Validation\Rules;
 class UserController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all()->where('type', 'User');
+
+
+        if($request->filled('search')){
+            $users = User ::search($request->search)->get();
+        }else{
+
+            $users = User::where('type', 'User')->get();;
+        }
+
+
+        // $users = User::all()->where('type', 'User');
         return view('admindashboard.usersCrud.users', compact('users'));
 
     }

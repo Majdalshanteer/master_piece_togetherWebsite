@@ -139,6 +139,9 @@
                                                 Total Price
                                             </th>
                                             <th>
+                                                Order Date
+                                            </th>
+                                            <th>
                                                 Address
                                             </th>
                                             <th>
@@ -158,16 +161,14 @@
                                                 </td>
                                             </tr>
                                         @else
-                                            {{-- @foreach ($orderdetails as $orderdetail)
-                                {{ $orderdetail->service_name }}
-                                {{ $orderdetail->amount }}
-                                @endforeach --}}
+
                                             @foreach ($orders as $order)
                                                 <tr>
                                                     <td>{{ $order->id }}</td>
 
                                                     <td>{{ $order->status }}</td>
                                                     <td>{{ $order->total }} JD</td>
+                                                    <td>{{ $order->created_at }}</td>
                                                     <td>{{ $order->address }} </td>
                                                     <td>{{ $order->phone }} </td>
                                                     <td><a href="{{ route('profile.show', $order->id ) }}">
@@ -233,10 +234,7 @@
                                                     <td>{{ $bookingdetail->booking_date }}</td>
                                                     <td>{{ $bookingdetail->total_price }} JD</td>
                                                     <td>{{ $bookingdetail->name }} </td>
-                                                    {{-- <td><button type="button" class="btn primary-outline"
-                                                            data-bs-toggle="modal" data-bs-target="#exampleModal{{$bookingdetail->id}}">
-                                                            <i class="bi bi-arrow-right-square"></i>
-                                                        </button></td> --}}
+
                                                 </tr>
                                             @endforeach
 
@@ -447,23 +445,9 @@
                     </div>
                 </div>
                 <br>
-{{--
-                <div class="row">
-                    <div class="col-sm-12 d-md-flex  justify-content-md-end">
 
-                        <button class="btn btn-primary p-2" type="submit">Update Profile</button>
-                    </div></div> --}}
 
-            {{-- <form>
-              <div class="mb-3">
-                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                <input type="text" class="form-control" id="recipient-name">
-              </div>
-              <div class="mb-3">
-                <label for="message-text" class="col-form-label">Message:</label>
-                <textarea class="form-control" id="message-text"></textarea>
-              </div>
-            </form> --}}
+
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

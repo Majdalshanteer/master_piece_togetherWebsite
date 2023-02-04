@@ -16,6 +16,7 @@ class BookingService extends Model
         'booking_date',
         'booking_time',
         'name',
+        'note',
         'email',
         'phone',
         'location',

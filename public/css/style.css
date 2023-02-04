@@ -567,11 +567,11 @@ h6,
             }
 
             .shopping-cart.dark {
-                background-color: #f6f6f6;
+
             }
 
             .shopping-cart .content {
-                box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+                box-shadow: 6px 10px 11px 20px rgba(0, 0, 0, 0.075);
                 background-color: white;
             }
 
@@ -637,10 +637,30 @@ h6,
                 font-weight: bold;
                 font-size: 22px;
             }
-
+.cartInput{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font: 15px/1 "Open Sans", sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    max-width: 500px;
+    min-width: 20px;
+    background-color: rgb(253, 253, 253);
+    border: none;
+    padding: 8px 11px 10px 11px;
+    border-radius: 5px;
+    box-shadow: none;
+    outline: none;
+    margin: 0;
+    box-sizing: border-box;
+}
             .shopping-cart .summary {
                 border-top: 2px solid #b78d65;
-                background-color: #fffcf5;
+                background-color:
+                #fdf0e8;
                 height: 100%;
                 padding: 30px;
             }
@@ -737,7 +757,7 @@ h6,
   #stars_rating .stars .star {
     position: relative;
     color: rgb(255, 213, 134);
-    font-size: 48px;
+    font-size: 40px;
     cursor: pointer;
     padding: 0 5px;
   }
@@ -745,25 +765,22 @@ h6,
     content: "★";
     position: absolute;
     transform: translateX(-100%);
-    top: 0px;
-    font-size: 48px;
+    font-size: 40px;
   }
   @media (min-width: 768px) {
     #stars_rating .stars .star {
-      padding: 0 7px;
-      font-size: 64px;
+      font-size: 40px;
     }
     #stars_rating .stars .star:after {
-      font-size: 64px;
+      font-size: 40px;
     }
   }
   @media (max-width: 479px) {
     #stars_rating .stars .star {
-      padding: 0 3px;
-      font-size: 36px;
+      font-size: 40px;
     }
     #stars_rating .stars .star:after {
-      font-size: 36px;
+      font-size: 40px;
     }
   }
   #stars_rating .stars .star.rated {
@@ -773,22 +790,19 @@ h6,
     color: orange;
     content: "★";
     position: absolute;
-    left: -1.5px;
-    top: -13px;
-    font-size: 64px;
+
+    font-size: 40px;
   }
   @media (min-width: 768px) {
     #stars_rating .stars .star.rated:before {
-      left: 0px;
-      top: -14.5px;
-      font-size: 80px;
+
+      font-size: 40px;
     }
   }
   @media (max-width: 479px) {
     #stars_rating .stars .star.rated:before {
-      left: -2px;
-      top: -10px;
-      font-size: 48px;
+
+      font-size: 40px;
     }
   }
   #stars_rating .stars:hover .star {
@@ -801,22 +815,19 @@ h6,
     color: orange;
     content: "★";
     position: absolute;
-    left: -1.5px;
-    top: -13px;
-    font-size: 64px;
+
+    font-size: 40px;
   }
   @media (min-width: 768px) {
     #stars_rating .stars.rated .star:before {
-      left: 0px;
-      top: -14.5px;
-      font-size: 80px;
+
+      font-size: 40px;
     }
   }
   @media (max-width: 479px) {
     #stars_rating .stars.rated .star:before {
-      left: -2px;
-      top: -10px;
-      font-size: 48px;
+
+      font-size: 40px;
     }
   }
   #stars_rating .stars.rated .star:after {
@@ -861,12 +872,12 @@ h6,
   }
   .search-container textarea {
     background-color: transparent;
-    border: 2px solid #f7d57f;
+    border: 2px solid #f8efd8;
     padding: 0.7em;
     color: #141313;
   }
   .search-container textarea:focus {
-    border-color: #1e1d1d;
+    border-color: #a7a4a4;
   }
 
 
@@ -998,6 +1009,7 @@ h6,
   -ms-transition: all 1s ease;
   -webkit-transition: all 1s ease;
   -o-transition: all 1s ease;
+  cursor: pointer;
 }
 
 .images:hover {
@@ -1016,7 +1028,7 @@ h6,
     background-size: cover;
     background-repeat: no-repeat;
     width: 300px;
-    aspect-ratio:12/14;
+    aspect-ratio:8/12;
     border-radius: 25px;
     position: relative;
     overflow: hidden;
@@ -1043,5 +1055,308 @@ h6,
 }
 
 
-/* error page */
+/* gallery */
 
+#gallery {
+  padding-top: 40px;
+}
+@media screen and (min-width: 991px) {
+  #gallery {
+    padding: 0px 0px 0px 0px;
+  }
+}
+
+.img-wrapper {
+  position: relative;
+  margin-top: 15px;
+}
+.img-wrapper img {
+  width: 100%;
+  cursor: pointer;
+}
+
+.img-overlay {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  cursor: pointer;
+}
+.img-overlay i {
+  color: #fff;
+  font-size: 3em;
+  cursor: pointer;
+}
+
+#overlay {
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#overlay img {
+  margin: 0;
+  width: 80%;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+  padding: 5%;
+
+}
+@media screen and (min-width: 768px) {
+  #overlay img {
+    width: 60%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  #overlay img {
+    width: 50%;
+  }
+}
+
+#nextButton {
+  color: #fff;
+  font-size: 2em;
+  transition: opacity 0.8s;
+  cursor: pointer;
+}
+#nextButton:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  #nextButton {
+    font-size: 3em;
+    cursor: pointer;
+  }
+}
+
+#prevButton {
+  color: #fff;
+  font-size: 2em;
+  transition: opacity 0.8s;
+  cursor: pointer;
+}
+#prevButton:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  #prevButton {
+    font-size: 3em;
+    cursor: pointer;
+  }
+}
+
+#exitButton {
+  color: #fff;
+  font-size: 2em;
+  transition: opacity 0.8s;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+#exitButton:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+@media screen and (min-width: 768px) {
+  #exitButton {
+    font-size: 3em;
+    cursor: pointer;
+  }
+}
+
+
+
+/* search input */
+.serachBtn{
+    border-radius: 3px;
+}
+.serachBtn2{
+    border-radius: 3px;
+}
+  .input-res {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font: 15px/1 "Open Sans", sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    max-width: 500px;
+    min-width: 20px;
+    background-color: #ddd;
+    border: none;
+    padding: 8px 11px 10px 11px;
+    border-radius: 3px;
+    box-shadow: none;
+    outline: none;
+    margin: 0;
+    box-sizing: border-box;
+  }
+.serachBtnMain{
+    border-radius: 3px;
+}
+  .input-resMain {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font: 15px/1 "Open Sans", sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    max-width: 500px;
+    min-width: 20px;
+    background-color: #ddd;
+    border: none;
+    padding: 8px 11px 10px 11px;
+    border-radius: 3px;
+    box-shadow: none;
+    outline: none;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  .input-ress {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font: 15px/1 "Open Sans", sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    max-width: 300px;
+    min-width: 20px;
+    background-color: rgb(249, 241, 228);
+    border: none;
+    padding: 8px 11px 10px 11px;
+    border-radius: 3px;
+    box-shadow: none;
+    outline: none;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  @media screen and (max-width: 580px) {
+    .input-res {
+     display: none;
+    }
+.serachBtn{
+    display: none;
+}
+}
+  @media screen and (min-width: 580px) {
+    .input-resMain {
+     display: none;
+    }
+.serachBtnMain{
+    display: none;
+}
+}
+
+
+
+.input-quan{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font: 15px/1 "Open Sans", sans-serif;
+    color: #333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    width: 100%;
+    max-width: 500px;
+    min-width: 20px;
+    background-color: rgb(236, 235, 235);
+    border: none;
+    padding: 8px 11px 10px 11px;
+    border-radius: 3px;
+    box-shadow: none;
+    outline: none;
+    margin: 0;
+    box-sizing: border-box;
+}
+.quanBtn{
+    border-radius: 3px;
+}
+
+
+
+
+/* checkout card */
+.col-25 {
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
+  }
+
+  .col-50 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+  }
+
+  .col-75 {
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
+  }
+
+  .col-25,
+  .col-50,
+  .col-75 {
+    padding: 0 16px;
+  }
+
+  .contain {
+    background-color: #f2f2f2;
+    padding: 5px 20px 15px 20px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+  }
+
+  .inp {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .lab {
+    margin-bottom: 10px;
+    display: block;
+  }
+
+  .icon-contain {
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
+  }
+
+
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+  @media (max-width: 800px) {
+    .roww {
+      flex-direction: column-reverse;
+    }
+    .col-25 {
+      margin-bottom: 20px;
+    }
+  }

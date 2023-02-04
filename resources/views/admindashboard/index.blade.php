@@ -148,7 +148,7 @@
                                   alt="user-avatar"
                                   class="d-block rounded"
                                   height="200"
-                                  width="150"
+                                  width="200"
                                   id="uploadedAvatar"
                                   style="margin-right: 5%"
                                 />

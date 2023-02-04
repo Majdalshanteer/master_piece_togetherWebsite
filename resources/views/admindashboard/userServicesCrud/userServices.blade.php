@@ -14,21 +14,13 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb m-0 p-0">
-                                    <li class="breadcrumb-item"><a href="index.html" class="text-muted">Apps</a></li>
+                                    <li class="breadcrumb-item"><a href="index.html" class="text-muted">Dashboard</a></li>
                                     <li class="breadcrumb-item text-muted active" aria-current="page">Book Services</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
-                    <div class="col-5 align-self-center">
-                        <div class="customize-input float-right">
-                            <select class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                                <option selected>Aug 19</option>
-                                <option value="1">July 19</option>
-                                <option value="2">Jun 19</option>
-                            </select>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -87,7 +79,7 @@
                                 </div>
                                 <a href="{{route('connectService.create')}}"><button class="btn btn-info">Add Service to Worker</button></a>
                                 <br>
-                                <div class="table-responsive">
+                                <div class="table-responsive mt-2">
                                     @if ($message = Session::get('success'))
                                     <div class="alert alert-success">
                                         <p>{{ $message }}</p>
@@ -150,8 +142,11 @@
 
                                     @endforeach
                                     </table>
-
                                     <ul class="pagination float-right">
+                                        {{ $userServices->links() }}
+
+                                    </ul>
+                                    {{-- <ul class="pagination float-right">
                                         <li class="page-item disabled">
                                             <a class="page-link" href="#" tabindex="-1">Previous</a>
                                         </li>
@@ -163,7 +158,7 @@
                                         <li class="page-item">
                                             <a class="page-link" href="#">Next</a>
                                         </li>
-                                    </ul>
+                                    </ul> --}}
                                 </div>
                             </div>
                         </div>

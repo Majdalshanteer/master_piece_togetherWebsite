@@ -51,7 +51,7 @@ class ProfileController extends Controller
         ->get();
         // dd($products);
 
-        return view('pages.orderDetails', compact('products','order','user')) ->with('i', (request()->input('page',1) - 1) * 2);;
+        return view('pages.orderDetails', compact('products','order','user')) ->with('i', (request()->input('page',1) - 1) * 2);
 
           }
 

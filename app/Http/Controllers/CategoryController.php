@@ -17,12 +17,23 @@ class CategoryController extends Controller
 
     }
 
-    public function show($id)
+
+    public function show(Request $request,$id)
     {
-        $categories = Category::find($id);
-        $services = Service::get()->where('category_id', '=', $categories->id);
-        $workers = UserService::all();
-        $users = User::all();
+
+        if($request->filled('search')){
+
+            $categories = Category::find($id);
+            $services = Service::search($request->search)->get()->where('category_id', '=', $categories->id);
+            $workers = UserService::all();
+            $users = User::all();
+        }else{
+
+            $categories = Category::find($id);
+            $services = Service::where('category_id', '=', $categories->id)->paginate(3);
+            $workers = UserService::all();
+            $users = User::all();
+        }
 
 
         return view('pages/servicesInsideCat', [
@@ -35,11 +46,16 @@ class CategoryController extends Controller
 
 
 
+
+
+
+
     public function workersName(Service $service) {
         $service=Service::with('users')->find($service->id);
+
         $users=User::all();
 
-        return view('pages/servicesInsideCat',compact('service','users')); }
+        return view('pages/servicesInsideCat',compact('service','users',)); }
 
 
 
