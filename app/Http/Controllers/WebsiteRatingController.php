@@ -9,7 +9,7 @@ class WebsiteRatingController extends Controller
 {
     public function index()
     {
-        $reviews = WebsiteRating::orderBy('id','desc')->paginate(4)->where('status', 'ok');
+        $reviews = WebsiteRating::paginate(3)->where('status', 'ok');
 
 
         // top five workers
@@ -39,9 +39,12 @@ class WebsiteRatingController extends Controller
 //    'user_id' => 'required|unique:website_ratings,comment',
             'user_id' => 'required|unique:website_ratings',
             'rate' => 'required|integer|between:1,5',
-            'comment' => 'required',
+            'comment' => 'required'],
+            [
+                'user_id.unique' => 'You have already rated',
 
-        ]);
+            ]
+        );
 
 
         $input = $request->all();

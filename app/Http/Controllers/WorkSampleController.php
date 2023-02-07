@@ -26,7 +26,13 @@ class WorkSampleController extends Controller
     {
         $request->validate([
             'worker_id' => 'required|unique:work_samples'
-        ]);
+        ],
+        [
+            'worker_id.unique' => 'You have already added your sample of work ',
+
+        ]
+
+    );
         $input = $request->all();
 
         if ($image = $request->file('image1')) {
