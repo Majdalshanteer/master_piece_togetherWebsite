@@ -28,7 +28,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->string('note');
+            $table->string('note')->nullable();
             $table->string('name');
             $table->string('email');
             $table->string('phone');

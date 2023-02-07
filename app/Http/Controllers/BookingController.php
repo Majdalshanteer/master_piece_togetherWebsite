@@ -27,7 +27,6 @@ public function index(){
             'booking_time'=>'required',
             'worker_id' => 'required',
             'location'  => 'required',
-            'note'  => 'required',
             'name' => 'required',
             'email' => 'required',
             'phone' => 'required',
@@ -59,7 +58,7 @@ public function index(){
         $booking->email  = $request->email;
         $booking->phone  = $request->phone;
         $booking->location  = $request->location;
-        // $booking->note  = $request->note;
+        $booking->note  = $request->note;
         $user = Auth::user()->id;
         $booking->worker_id =$request->worker_id ;
 

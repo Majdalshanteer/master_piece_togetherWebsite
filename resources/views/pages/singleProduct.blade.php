@@ -317,18 +317,18 @@
 
                   <div class="row">
 
-                      <label class="lab" for="ccnum">Credit card number</label>
-                      <input class="inp" type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
-                      <label class="lab" for="expmonth">Exp Month</label>
-                      <input class="inp" type="text" id="expmonth" name="expmonth" placeholder="MM" required>
+                      <label class="lab" for="ccnum"><i style="color: #b78d65" class="bi bi-credit-card-2-back"></i><b> Credit card number</b></label>
+                      <input class="inp" type="text" id="ccnum" name="cardnumber" maxlength="16" placeholder="1111-2222-3333-4444" required>
+                      <label class="lab" for="expmonth"><i style="color: #b78d65" class="bi bi-calendar-month"></i><b> Exp Month</b></label>
+                      <input class="inp" type="text" id="expmonth" name="expmonth" placeholder="MM" maxlength="2" required>
                       <div class="row">
                         <div class="col-50">
-                          <label class="lab" for="expyear">Exp Year</label>
-                          <input class="inp" type="text" id="expyear" name="expyear" placeholder="YYYY" required>
+                          <label class="lab" for="expyear"><i style="color: #b78d65" class="bi bi-calendar2"></i> <b>Exp Year</b></label>
+                          <input class="inp" type="text" id="expyear" name="expyear" maxlength="4" placeholder="YYYY" required>
                         </div>
                         <div class="col-50">
-                          <label class="lab" for="cvv">CVV</label>
-                          <input class="inp" type="text" id="cvv" name="cvv" placeholder="123" required>
+                          <label class="lab" for="cvv"><i style="color: #b78d65" class="bi bi-credit-card-2-back"></i> <b>CVV</b></label>
+                          <input class="inp" type="text" id="cvv" name="cvv" placeholder="123" maxlength="3" required>
                         </div>
                       </div>
                     </div>

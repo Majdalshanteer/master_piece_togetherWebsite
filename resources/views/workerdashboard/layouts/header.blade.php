@@ -205,7 +205,7 @@
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-                        <li class="nav-item d-none d-md-block">
+                        {{-- <li class="nav-item d-none d-md-block">
                             <a class="nav-link" href="javascript:void(0)">
                                 <form>
                                     <div class="customize-input">
@@ -215,15 +215,15 @@
                                     </div>
                                 </form>
                             </a>
-                        </li>
+                        </li> --}}
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
                         <!-- ============================================================== -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
-                                    @if (Auth::check()) <img src="images/{{Auth::user()->image}} " alt="user" class="rounded-circle"
-                                    width="40">
+                                    @if (Auth::check()) <img src="{{asset('images')}}/{{Auth::user()->image}}" alt="user" class="rounded-circle"
+                                    style="width:60px; height:50px">
 
 
                                     {{-- <a href="" class="btn btn-primary py-2 px-4 d-none d-lg-block">Hello &nbsp;{{Auth::user()->name}}
