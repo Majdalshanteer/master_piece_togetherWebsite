@@ -223,7 +223,7 @@
                                 aria-haspopup="true" aria-expanded="false">
                                     @if (Auth::check())
 
-                                    <img src="images/{{Auth::user()->image}} " alt="user" class="rounded-circle"
+                                    <img src="{{asset('images')}}/{{Auth::user()->image}}" alt="user" class="rounded-circle"
                                   style="width:60px; height:50px">
 
 

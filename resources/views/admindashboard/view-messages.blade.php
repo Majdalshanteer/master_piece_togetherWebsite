@@ -127,7 +127,7 @@
                                         <!-- edit button -->
                                         <a href="" class="ms-3 "><i class="fas fa-user-edit"></i></a>
                                         <form style="display: inline-block" method="POST"
-                                            action="{{ route('view-messages.destroy',$message->id) }}"onsubmit="return confirm('Are you sure?');">
+                                            action="{{ route('view-messages.destroy',$message->id) }}">
 
                                             <a  href="{{ route('view-messages.show', $message->id) }}">
                                               Show<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-arrow-bar-right" viewBox="0 0 16 16">
@@ -139,7 +139,33 @@
                                           <!-- Delete button -->
                                           @csrf
                                           @method('DELETE')
-                                            <button class="btn text-danger"><i class="far fa-trash-alt"></i></button>
+  <!-- Button trigger modal -->
+<button type="button" class="btn text-danger" data-toggle="modal" data-target="#exampleModal{{$message->id}}">
+    <i class="far fa-trash-alt"></i>
+  </button>
+
+                                            <!-- Modal -->
+  <div class="modal fade" id="exampleModal{{$message->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
                                         </form>
                                     </td>
                                 </tr>

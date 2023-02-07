@@ -36,6 +36,13 @@ class WebsiteRatingAdminController extends Controller
     }
 
 
+    public function destroy($id)
+    {
+        $review = WebsiteRating::where('id',$id)->first();
+        $review->delete();
+        return redirect()->back()
+            ->with('success', 'Rate deleted successfully');
+    }
 
 
 

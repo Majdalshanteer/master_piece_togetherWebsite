@@ -30,7 +30,7 @@ class CategoryController extends Controller
         }else{
 
             $categories = Category::find($id);
-            $services = Service::where('category_id', '=', $categories->id)->paginate(3);
+            $services = Service::where('category_id', '=', $categories->id)->paginate(4);
             $workers = UserService::all();
             $users = User::all();
         }

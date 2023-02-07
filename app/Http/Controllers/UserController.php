@@ -11,10 +11,10 @@ class UserController extends Controller
 
 
         if($request->filled('search')){
-            $users = User ::search($request->search)->get();
+            $users = User ::search($request->search)->where('type', 'User')->get();
         }else{
 
-            $users = User::where('type', 'User')->get();;
+            $users = User::where('type', 'User')->get();
         }
 
 
@@ -40,32 +40,29 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|max:255|unique:users',
             'phone' => 'required|digits:10',
-
             'password' => 'required',
             'type' => 'required',
 
-            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3048',
         ]);
 
-        $input = $request->all();
 
-        if ($image = $request->file('image')) {
-            $destinationPath = 'images/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        }
+
+        $file_name = time() . '.' . request()->image->getClientOriginalExtension();
+        request()->image->move(public_path('images'), $file_name);
+
+
+        $user = new User();
+
+
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
             'type'  => $request->type,
-
             'password' => Hash::make($request->password),
-
+            'image' => $file_name,
            ]);
-
         return redirect()->route('usersinfo.index')
             ->with('success', 'user created successfully.');
     }

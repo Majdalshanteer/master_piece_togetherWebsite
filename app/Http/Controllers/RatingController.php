@@ -7,14 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
-//     public function index(){
 
-//   $rates = DB::table('ratings')->where('worker_id',1)->avg('rate');
-//     return view('pages.show', [
-//         'rates' => $rates
-//     ]);
-
-//     }
 
 public function index()
 {

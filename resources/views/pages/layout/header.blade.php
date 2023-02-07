@@ -78,7 +78,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/" class="nav-item nav-link ">Home</a>
-                {{-- <a href="/about" class="nav-item nav-link">About</a> --}}
+                <a href="/about" class="nav-item nav-link">About</a>
                 <a href="/services" class="nav-item nav-link">Services</a>
                 <a href="/workers" class="nav-item nav-link">Workers</a>
 {{--

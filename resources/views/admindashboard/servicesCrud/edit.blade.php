@@ -162,12 +162,12 @@
                             </div>
                         </div>
                     </div></div>
-                    <br>
 
 
+<hr>
 
 
-                        <label>Upload image</label>
+                        <label>Upload Main Image</label>
                         <h6 class="card-subtitle">Choose a photo
                         </h6>
 
@@ -175,7 +175,7 @@
                                 <input type="file" name="image" class="form-control-file" id="exampleInputFile">
                             </fieldset>
 
-<img src="/servicesImages/{{ $service->image }}" width="100px">
+<img src="/servicesImages/{{ $service->image }}" width="250px" height="200px">
 
 
                     </div><br>
@@ -185,7 +185,7 @@
 
 
                     {{-- @if($service->type == "cart") --}}
-
+<hr>
            <div class="row">
                             <div class="col-12">
 
@@ -197,8 +197,8 @@
                             </div>
                         </div>
                         </div>
-
-                        <label>Upload image</label>
+<hr>
+                        <label>Upload First Image</label>
                         {{-- <h6 class="card-subtitle">Choose a photo
                         </h6> --}}
 
@@ -206,9 +206,10 @@
                                 <input type="file" name="image2" class="form-control-file" id="exampleInputFile">
                             </fieldset>
 
-<img src="/servicesImages2/{{$service->image2 }}" width="100px">
+<img src="/servicesImages2/{{$service->image2 }}" width="150px" height="150px">
 <br>
-                        <label>Upload image</label>
+<hr>
+                        <label>Upload Second Image</label>
                         {{-- <h6 class="card-subtitle">Choose a photo
                         </h6> --}}
 
@@ -216,9 +217,10 @@
                                 <input type="file" name="image3" class="form-control-file" id="exampleInputFile">
                             </fieldset>
 
-<img src="/servicesImages3/{{$service->image3 }}" width="100px">
+<img src="/servicesImages3/{{$service->image3 }}" width="150px"height="150px">
 <br>
-                        <label>Upload image</label>
+<hr>
+                        <label>Upload Third Image</label>
                         {{-- <h6 class="card-subtitle">Choose a photo
                         </h6> --}}
 
@@ -226,11 +228,11 @@
                                 <input type="file" name="image4" class="form-control-file" id="exampleInputFile">
                             </fieldset>
 
-<img src="/servicesImages4/{{$service->image4 }}" width="100px">
+<img src="/servicesImages4/{{$service->image4 }}" width="150px"height="150px">
 
 {{-- @endif --}}
                     </div><br>
-                    <div class="form-actions">
+                    <div class="form-actions p-2">
                         <div class="text-right">
                             <button type="submit" class="btn btn-info">Update</button>
                             {{-- <button type="reset" class="btn btn-dark">Reset</button> --}}

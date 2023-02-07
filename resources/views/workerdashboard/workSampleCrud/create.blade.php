@@ -30,7 +30,7 @@
                                 <div class="form-group has-icon-left">
                                     <label for="first-name-icon">Worker Name</label>
 
-                                    <input type="text" name="worker_id" value="{{Auth::user()->id}}" >
+                                    <input type="hidden"  name="worker_id" value="{{Auth::user()->id}}" >
                                     <div class="position-relative">
                                         <input type="text" name="" value="{{Auth::user()->name}}" readonly class="form-control" placeholder="Service Name"
                                             id="first-name-icon">

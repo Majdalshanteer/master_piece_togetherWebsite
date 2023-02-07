@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Models\order_detail;
 use App\Models\order_item;
+use App\Models\Rating;
 
 class ProfileController extends Controller
 {
@@ -24,13 +25,17 @@ class ProfileController extends Controller
     ->select('booking_services.*', 'users.*', 'services.*')
     ->where('user_id','=',Auth::user()->id)
     ->get();
+
+    $comments=Rating::where('user_id','=',Auth::user()->id)->paginate(2);
+
 // dd( $bookingdetails);
 
         return view('pages.profile', [
             'user' => Auth::user(),
             'orders'=>$orders,
             // 'orderdetails' =>$orderdetails,
-            'bookingdetails' =>$bookingdetails
+            'bookingdetails' =>$bookingdetails,
+            'comments'      =>$comments,
         ]) ;
     }
 
@@ -97,13 +102,18 @@ class ProfileController extends Controller
         $profile->update($input);
 
 
-
-
-
-
           return redirect()->route('profile.index')->with('success', 'profile updated successfully');
 
 
 
       }
+
+      public function destroy($id)
+      {
+          $comment = Rating::where('id',$id)->first();
+          $comment->delete();
+          return redirect()->route('profile.index')
+              ->with('success', 'Rate deleted successfully');
+      }
+
 }

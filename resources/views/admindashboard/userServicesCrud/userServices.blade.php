@@ -117,25 +117,46 @@
                                                     <!-- edit button -->
                                                     <a href="" class="ms-3 "></a>
                                                     <form style="display: inline-block" method="POST"
-                                                        action="{{ route('connectService.destroy',$userService->id) }}"onsubmit="return confirm('Are you sure?');" >
+                                                        action="{{ route('connectService.destroy',$userService->id) }}">
 
 
                                                       <!-- Delete button -->
                                                       @csrf
                                                       @method('DELETE')
-                                                        <button class="btn text-danger"><i class="far fa-trash-alt"></i></button>
+
+
+<!-- Button trigger modal -->
+<button type="button" class="btn text-danger" data-toggle="modal" data-target="#exampleModal{{$userService->id}}">
+    <i class="far fa-trash-alt"></i>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal{{$userService->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Service</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
                                                     </form>
                                                 </td>
-                                                {{-- <td>
-                                                    <!-- show button -->
-                                                    <a href="" class="ms-3 "></a>
-                                                    <form style="display: inline-block" method="POST" >
-                                                        <a   href="{{ route('connectService.edit', $userService->id) }}">Edit
-                                                         </a>
 
-
-                                                    </form>
-                                                </td> --}}
                                             </tr>
 
 
@@ -146,19 +167,7 @@
                                         {{ $userServices->links() }}
 
                                     </ul>
-                                    {{-- <ul class="pagination float-right">
-                                        <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li>
-                                    </ul> --}}
+
                                 </div>
                             </div>
                         </div>

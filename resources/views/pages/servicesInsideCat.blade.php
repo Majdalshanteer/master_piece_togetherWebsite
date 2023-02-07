@@ -119,9 +119,9 @@
                             @if ($service->type =="cart")
 
 
-                            <div class="card" style="width: 20rem; margin:10px" >
+                            <div class="card" style="width: 16rem; margin:10px" >
             <div class="image-box">
-                                <img src="/servicesImages/{{ $service->image }}" style="height: 300px" class="images card-img-top mt-2" alt="...">
+                                <img src="/servicesImages/{{ $service->image }}" style="height: 220px" class="images card-img-top mt-2" alt="...">
             </div>
                                 <hr>
                                 <div class="card-body">
@@ -264,7 +264,7 @@
                 @endforeach
                 @if(request()->get('search'))
                 @else
-    <div class="row"style="margin-top: 15%">
+    <div class="row"style="margin-top: 8%">
         <div  class="col-sm-12 d-md-flex mt-5  justify-content-md-center">
 
             {{ $services->links() }}        </div>

@@ -13,9 +13,12 @@ class WorkersController extends Controller
     {
         if($request->filled('search')){
             $workers = User ::search($request->search)->get()->where('type', 'Worker');
+            $comments=Rating::all();
+
         }else{
 
   $workers= User::where('type', 'Worker')->paginate(8);
+  $comments=Rating::all();
         }
 
     return view('pages/workers', compact('workers'));
@@ -36,13 +39,12 @@ class WorkersController extends Controller
         return view('pages.show',compact('worker','workSamples','average','comments'));
     }
 
-    public function destroy(Rating $comment)
-    {
-
-        $comment->delete();
-        return redirect()->back()
-            ->with('success', 'comment deleted successfully');
-    }
-
+    public function destroy($id)
+      {
+          $comment = Rating::where('id',$id)->first();
+          $comment->delete();
+          return redirect()->back()
+              ->with('success', 'Rate deleted successfully');
+      }
 
 }

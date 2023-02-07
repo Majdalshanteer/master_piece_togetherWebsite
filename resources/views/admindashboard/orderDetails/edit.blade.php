@@ -50,18 +50,24 @@
                     <h4 class="card-title">Edit Order Status</h4>
                     <br>
                     <div class="col-6">
-                        <table class="table mb-5 mx-2">
+                        <table class="table table-borderd  ">
                             <thead>
                                 <tr>
-                                    <th>product #</th>
-                                    <th>quantity</th>
+                                    <th >Product </th>
+                                    <th >Image </th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($products as $product)
                                     <tr>
-                                        <td>{{ $product->id }}</td>
+                                        <td >{{ $product->service_name }}</td>
+                                        <td><a href="javascript:void(0)" class="font-bold link"><img src="/servicesImages/{{ $product->image }}"  width="80px" height="80px"></a></td>
+
                                         <td>{{ $product->amount }}</td>
+
+                                        <td>{{ $product->price}}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -71,7 +77,7 @@
                         @csrf
                         @method('PATCH')
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item"># {{ $order->id }}</li>
+                        <li class="list-group-item">Order Num {{ $order->id }}</li>
                         <li class="list-group-item">Name : {{ $name }}</li>
                         <li class="list-group-item">Location :{{ $order->address }}</li>
                         <li class="list-group-item">Phone :{{ $order->phone }}</li>

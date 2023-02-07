@@ -19,7 +19,6 @@ class AddToCartController extends Controller
     {
         $service = Service::find($request->serviceId);
         $quantity = $request->quantity;
-        // $category = Category::find($service->service_id);
 
 
         if (session()->has('order')) {
@@ -30,13 +29,14 @@ class AddToCartController extends Controller
 
         } else {
             $order = [
-                // 'categoryId' => $category->id,
                 'services' => [
                     $service->id => $quantity
                 ]
             ];
+
+            // dd($order);
             session()->put('order', $order);
-            return Redirect::back();
+            return Redirect::back()->withSuccess('Product has been added');
         }
 
 

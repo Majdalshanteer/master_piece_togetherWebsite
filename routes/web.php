@@ -53,8 +53,8 @@ Route::get('/appointment', function () {
 Route::get('/feature', function () {
     return view('pages.feature');
 });
-Route::get('/project', function () {
-    return view('pages.project');
+Route::get('/about', function () {
+    return view('pages.about');
 });
 
 
@@ -70,7 +70,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //dashboard routes
 Route::resource('/', websiteRatingController::class);
-Route::resource('/about', TopRatedController::class);
+Route::resource('/test', TopRatedController::class);
 
 Route::resource('/usersinfo', UserController::class);
 Route::resource('/workersinfo', WorkersTableAdminController::class);

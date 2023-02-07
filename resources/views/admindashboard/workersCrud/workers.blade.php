@@ -128,7 +128,7 @@
                                                     <!-- edit button -->
                                                     <a href="" class="ms-3 "></a>
                                                     <form style="display: inline-block" method="POST"
-                                                        action="{{ route('workersinfo.destroy',$worker->id) }}"onsubmit="return confirm('Are you sure?');" >
+                                                        action="{{ route('workersinfo.destroy',$worker->id) }}" >
                                                         <a   href="{{ route('workersinfo.edit', $worker->id) }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-pencil-square" viewBox="0 0 16 16">
                                                             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                                                             <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
@@ -137,7 +137,33 @@
                                                       <!-- Delete button -->
                                                       @csrf
                                                       @method('DELETE')
-                                                        <button class="btn text-danger"><i class="far fa-trash-alt"></i></button>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn text-danger" data-toggle="modal" data-target="#exampleModal{{$worker->id}}">
+    <i class="far fa-trash-alt"></i>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal{{$worker->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Worker</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
                                                     </form>
                                                 </td>
                                             </tr>
@@ -150,20 +176,7 @@
                                         {{ $workers->links() }}
 
                                     </ul>
-                                    <ul class="pagination float-right">
 
-                                        {{-- <li class="page-item disabled">
-                                            <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                        </li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                                        </li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item">
-                                            <a class="page-link" href="#">Next</a>
-                                        </li> --}}
-                                    </ul>
                                 </div>
                             </div>
                         </div>

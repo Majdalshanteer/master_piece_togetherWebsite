@@ -21,7 +21,6 @@ class DeleteFromCartController extends Controller
             session()->forget("order");
         }
 
-        // dd(session()->get('order.services'));
-        return back();
+        return back()->withSuccess('Product has been deleted');
     }
 }

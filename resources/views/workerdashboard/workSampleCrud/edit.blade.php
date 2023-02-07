@@ -68,7 +68,7 @@
 
 
 
-
+<hr>
 
 
                         <label>Upload image</label>
@@ -84,7 +84,7 @@
 
                     </div><br>
 
-
+<hr>
                         <label>Upload image</label>
                         {{-- <h6 class="card-subtitle">Choose a photo
                         </h6> --}}
@@ -95,6 +95,7 @@
 
 <img src="/sampleImages2/{{$workSample->image2 }}" width="100px">
 <br>
+<hr>
                         <label>Upload image</label>
                         {{-- <h6 class="card-subtitle">Choose a photo
                         </h6> --}}
@@ -105,6 +106,7 @@
 
 <img src="/sampleImages3/{{$workSample->image3 }}" width="100px">
 <br>
+<hr>
                         <label>Upload image</label>
                         {{-- <h6 class="card-subtitle">Choose a photo
                         </h6> --}}

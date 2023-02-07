@@ -38,7 +38,7 @@
     <div class="col-6">
         <div class="card">
             <div class="card-body">
-               
+
                 <form action="{{ route('categories.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
     @method('PUT')
@@ -63,7 +63,7 @@
                             </div>
                         </div>
 
-
+<hr>
                         <label>Upload image</label>
                         <h6 class="card-subtitle">Choose a photo
                         </h6>
@@ -75,7 +75,8 @@
 <img src="/categoryImages/{{ $category->image }}" width="100px">
 
 
-                    </div><br>
+                    </div>
+                    <hr>
                         <label>Upload logo</label>
                         <h6 class="card-subtitle">Choose a logo
                         </h6>

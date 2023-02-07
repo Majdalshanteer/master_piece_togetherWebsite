@@ -119,7 +119,6 @@
                                                             </bdi>
                                                         </td>
                                                         <td>
-                                                            {{-- {{ $service->id }} --}}
                                                             {{ session('order.services')[$service->id] }}
 
                                                         </td>

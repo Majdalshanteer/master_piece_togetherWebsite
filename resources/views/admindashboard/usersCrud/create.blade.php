@@ -20,8 +20,7 @@
     @endif
         <div class="card-content">
             <div class="card-body">
-                <form class="form form-vertical" method="POST" action="{{ route('usersinfo.store') }}"
-                    enctype="multipart/form-data">
+                <form class="form form-vertical" method="POST" action="{{ route('usersinfo.store')}}" enctype="multipart/form-data">
                     @csrf
 
 
@@ -111,20 +110,6 @@
                             </div>
 
 
-
-
-                            {{-- <div class="col-12">
-                                <label for="user_type">User Type</label>
-                                <div class="position-relative">
-                            <select name="type" style="width:200px; height:30px;" id = "type" onchange = "ShowHideDiv()">
-
-                                <option value="admin">admin</option>
-                                <option value="owner">owner</option>
-                                <option value="user">user</option>
-
-                              </select>
-                            </div>
-                            </div> --}}
 
 
  </div>

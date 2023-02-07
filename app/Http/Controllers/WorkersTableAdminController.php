@@ -40,36 +40,6 @@ class WorkersTableAdminController extends Controller
      */
     public function store(Request $request)
     {
-    //     $request->validate([
-    //         'name' => 'required',
-    //         'email' => 'required|email|max:255|unique:users',
-    //         'phone' => 'required|digits:10',
-    //         'password' => 'required',
-    //         'type' => 'required',
-
-    //         // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:3048',
-    //     ]);
-
-
-
-    //     User::create([
-    //         'name' => $request->name,
-    //         'email' => $request->email,
-    //         'phone' => $request->phone,
-    //         'type'  => $request->type,
-    //         'password' => Hash::make($request->password),
-
-    //        ]);
-
-
-    //  if ($image = $request->file('image')) {
-    //         $destinationPath = 'images/';
-    //         $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-    //         $image->move($destinationPath, $profileImage);
-    //         $input['image'] = "$profileImage";
-    //     }
-    //      $input = $request->all();
-    //     //  UserService::create($input);
 
     $request->validate([
         'name' => 'required',
@@ -159,7 +129,7 @@ class WorkersTableAdminController extends Controller
         $user = User::where('id',$id)->first();
         $user->delete();
         return redirect()->route('workersinfo.index')
-            ->with('success', 'user deleted successfully');
+            ->with('success', 'worker deleted successfully');
     }
 
 

@@ -16,6 +16,7 @@ class CartController extends Controller
             foreach (session()->get('order.services') as $key => $value) {
                 array_push($ids,$key);
                 $array[$key] = $value;
+
             }
 
 

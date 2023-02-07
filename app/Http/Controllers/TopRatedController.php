@@ -9,7 +9,7 @@ class TopRatedController extends Controller
 {
 
     //not active code moved to websiteRatingController
-    
+
     public function index()
     {
         $topFiveWorkers = DB::table('users')
@@ -20,7 +20,7 @@ class TopRatedController extends Controller
         ->take(5)
         ->get();
 
-    return view('pages.about', compact('topFiveWorkers'));
+    return view('pages.testtoprated', compact('topFiveWorkers'));
 }
 
 
