@@ -108,7 +108,18 @@
                                             <td>{{ $order->address }}</td>
                                             <td>{{ $order->phone }}</td>
                                             <td>{{ $order->total }} JD</td>
-                                            <td>{{ $order->status }}</td>
+                                            <td>
+                                                @if( $order->status == 'Pending')
+                                                <span class="badge bg-danger font-12 text-white
+                                                font-weight-medium badge-pill ml-2 d-md-none d-lg-block"> {{ $order->status }}
+                                           </span>
+                                           @else
+                                           <span class="badge bg-success font-12 text-white
+                                           font-weight-medium badge-pill ml-2 d-md-none d-lg-block"> {{ $order->status }}
+                                      </span>
+                                      @endif
+
+                                            </td>
                                             <td>
                                                 <a class="btn me-2 text-white"
                                                     href="{{ route('orders.edit', $order->id) }}">

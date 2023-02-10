@@ -162,7 +162,7 @@
 
                     <div class="team-item position-relative">
                         <div class="position-relative">
-                            <img class="img-fluid" src="/images/{{$worker->image}}" style="width: 300px ; height:200px"  alt="">
+                            <img class="img-fluid imageRes" src="/images/{{$worker->image}}" style="width: 300px ; height:200px"  alt="">
 
                             <div class="team-social text-center">
                                 {{-- <i class="fab fa-facebook-f"></i> --}}

@@ -25,9 +25,11 @@ class ProfileController extends Controller
     ->select('booking_services.*', 'users.*', 'services.*')
     ->where('user_id','=',Auth::user()->id)
     ->get();
-
+    $bookCount=count($bookingdetails);
+// dd($bookCount);
     $comments=Rating::where('user_id','=',Auth::user()->id)->paginate(2);
-
+    $commentCount=count($comments);
+    $orderscount=count($orders);
 // dd( $bookingdetails);
 
         return view('pages.profile', [
@@ -36,6 +38,9 @@ class ProfileController extends Controller
             // 'orderdetails' =>$orderdetails,
             'bookingdetails' =>$bookingdetails,
             'comments'      =>$comments,
+            'bookCount'     =>$bookCount,
+            'commentCount'  => $commentCount,
+            'orderscount'   =>$orderscount,
         ]) ;
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\UserService;
 class WorkersController extends Controller
 {
     public function index(Request $request)
@@ -31,6 +32,7 @@ class WorkersController extends Controller
         // $avgStar = Rating::avg('rate')->find($id)->where('id',$id)->first();;
         $workSamples =WorkSample::all()->where('worker_id', '=', $id);
         $comments=Rating::where('worker_id', $id)->paginate(2);
+
         $average = DB::table('ratings')
             ->where('worker_id', $id)
             ->avg('rate');

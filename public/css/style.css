@@ -1028,7 +1028,7 @@ h6,
     background-size: cover;
     background-repeat: no-repeat;
     width: 300px;
-    aspect-ratio:8/12;
+    aspect-ratio:12/16;
     border-radius: 25px;
     position: relative;
     overflow: hidden;
@@ -1362,6 +1362,9 @@ h6,
   }
 
 
+@media (max-width:400px){
+    .imageRes{
+        width:30%
+    }
+}
 
-
-  

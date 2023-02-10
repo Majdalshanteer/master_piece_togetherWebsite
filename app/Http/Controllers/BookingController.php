@@ -32,21 +32,15 @@ public function index(){
             'phone' => 'required',
             'service_id'  => 'required',
             'total_price'  => 'required',
-            // 'booking_date' => ['required', 'date', BookingService::unique('reservations', 'booking_date')->where(function ($query) {
-            //     return $query->where('worker_id', request()->worker_id);
-            // })->ignore(request()->reservation)],
+
         ]);
 
-        // $validatedData = $request->validate([
-        //     'date_time' => ['required', 'date', Rule::unique('reservations', 'date_time')->where(function ($query) {
-        //         return $query->where('worker_id', request()->worker_id);
-        //     })->ignore(request()->reservation)],
-        // ]);
+
 
         BookingService::create($request->all());
 
         return redirect()->back()
-                         ->with(['success' => 'Thank you, your reservation is confirmed .']);
+                         ->with(['success' => 'Thank you, your reservation created successfully.']);
 
 
         $booking = new BookingService;

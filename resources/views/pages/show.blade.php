@@ -3,8 +3,6 @@
 
 @section('content')
     <!DOCTYPE html>
-
-
     <div class="container">
         <div class="main-body">
             <br>
@@ -22,16 +20,16 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="/images/{{ $worker->image }}" alt="Admin" class="rounded-circle" style="height: 200px" width="200">
+                                <img src="/images/{{ $worker->image }}" alt="Admin" class="rounded-circle"
+                                    style="height: 200px" width="200">
                                 <div class="mt-3">
                                     <h4>{{ $worker->name }}</h4>
-                                     @for($i=1; $i<=$average; $i++)
-
-                                    <span class="text-primary"><i class="fa fa-star text-warning " ></i></span>
+                                    @for ($i = 1; $i <= $average; $i++)
+                                        <span class="text-primary"><i class="fa fa-star text-warning "></i></span>
                                     @endfor
                                     <br>
 
-                                    | {{ round($average,2) }} |
+                                    | {{ round($average, 2) }} |
 
 
 
@@ -74,7 +72,7 @@
                                     <div id="stars_rating">
                                         {{-- <p class="heading">Please rate me</p> --}}
                                         <br>
-                                             <p class="rates">
+                                        <p class="rates">
                                             <span class="avg" hidden> </span>
                                             Please rate me|
                                             Your Rating:<span class="rate"> </span>
@@ -90,7 +88,7 @@
 
                                         <br>
                                         <div class="search-container">
-                                            <textarea type="text" placeholder="Type your comment ..." id="movie-name"  name="comment" required></textarea>
+                                            <textarea type="text" placeholder="Type your comment ..." id="movie-name" name="comment" required></textarea>
 
                                         </div>
 
@@ -101,9 +99,6 @@
                                 <div class="card-footer">
                                     <p>
                                         @if (Auth::check())
-
-
-
                                             <button type="submit" class="btn btn-primary">Rate me</button>
                                         @else
                                             <button type="submit" disabled class="btn btn-primary">Rate me</button>
@@ -152,8 +147,9 @@
                                 </div>
                                 <div class="col-sm-9 text-secondary">
                                     @foreach ($worker->serviceSection as $service)
-                                        {{ $service->service->service_name }}|
+                                        {{ $service->service->service_name }},
                                     @endforeach
+                                    
                                 </div>
                             </div>
                             <hr>
@@ -252,156 +248,106 @@
 
 
 
-                <div class="col-sm-12 mb-3">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h6 class="d-flex align-items-center mb-3"><i class="material-icons text-info mr-2">Rev</i> iews</h6>
+                    <div class="col-sm-12 mb-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h6 class="d-flex align-items-center mb-3"><i
+                                        class="material-icons text-info mr-2">Rev</i> iews</h6>
 
 
+                                @foreach ($comments as $comment)
+                                    <div class="verified_customer_section">
+                                        <div class="image_review">
+                                            <div class="customer_image">
+                                                <img src="/images/{{ $comment->user->image }}" alt="customer image">
+                                            </div>
 
+                                            <div class="customer_name_review_status">
+                                                <div class="customer_name">{{ $comment->user->name }}
+                                                </div>
+                                                <div class="customer_review">
+                                                    @for ($i = 1; $i <= $comment->rate; $i++)
+                                                        <span><i class="fa fa-star text-warning"></i></span>
+                                                    @endfor
+                                                </div>
+                                                <div class="customer_status">
+                                                    <div class="customer_bage"> <img
+                                                            src="https://cdn.shopify.com/s/files/1/0566/8241/4246/t/11/assets/icon-verified-1662629893290.png?v=1662629894"
+                                                            alt=""> </div>
+                                                    <div class="customer_status_content">{{ $comment->user->updated_at }}
+                                                    </div>
+                                                </div>
 
-                            {{-- @foreach ($worker->ReviewData as $review)     --}}
-                            {{-- {{ $review->user->name }} --}}
-                            @foreach ($comments as $comment)
-                                <div class="verified_customer_section">
-                                    <div class="image_review">
-                                        <div class="customer_image">
-                                            <img src="/images/{{ $comment->user->image }}" alt="customer image">
+                                            </div>
                                         </div>
 
-                                        <div class="customer_name_review_status">
-                                            <div class="customer_name">{{ $comment->user->name }}
-                                            </div>
-                                            <div class="customer_review">
-                                                @for ($i = 1; $i <= $comment->rate; $i++)
-                                                    <span><i class="fa fa-star text-warning"></i></span>
-                                                @endfor
-                                            </div>
-                                            <div class="customer_status">
-                                                <div class="customer_bage"> <img
-                                                        src="https://cdn.shopify.com/s/files/1/0566/8241/4246/t/11/assets/icon-verified-1662629893290.png?v=1662629894"
-                                                        alt=""> </div>
-                                                <div class="customer_status_content">{{ $comment->user->updated_at }}</div>
-                                            </div>
+                                        <hr>
+                                        <div class="customer_comment">{{ $comment->comment }}</div>
+                                        @if (Auth::check())
+                                            @if (Auth::user()->id == $comment->user->id)
+                                                <form style="display: inline-block" method="POST"
+                                                    action="{{ route('workers.destroy', $comment->id) }}">
+                                                    <button type="button" class="btn text-danger" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal{{ $comment->id }}">
+                                                        <i class="far fa-trash-alt"></i>
+                                                    </button>
 
-                                        </div>
+                                                    <!-- Delete button -->
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <!-- Button trigger modal -->
+
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal{{ $comment->id }}"
+                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                        Delete Comment</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Are you sure?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Delete</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+                                            @endif
+                                        @endif
                                     </div>
+                                    <br>
+                                    {{-- @endforeach   --}}
+                                @endforeach
+                            </div>
+                            <div class="row mx-2">
+                                <div class="col-sm-12 d-md-flex   justify-content-md-end">
 
-                                    <hr>
-                                    <div class="customer_comment">{{ $comment->comment }}</div>
-                                    @if (Auth::check())
-@if (Auth::user()->id==$comment->user->id)
-<form style="display: inline-block" method="POST"
-action="{{ route('workers.destroy',$comment->id) }}">
-<button type="button" class="btn text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal{{$comment->id}}">
-    <i class="far fa-trash-alt"></i>
-  </button>
-
-<!-- Delete button -->
-@csrf
-@method('DELETE')
-<!-- Button trigger modal -->
-
-
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal{{$comment->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Comment</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-         Are you sure?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</form>
-@endif
-@endif
-                                </div>
-                                <br>
-                            {{-- @endforeach   --}}
-                             @endforeach</div>
-                             <div class="row mx-2">
-                                <div  class="col-sm-12 d-md-flex   justify-content-md-end">
-
-                                    {{ $comments->links() }}        </div>
+                                    {{ $comments->links() }} </div>
                             </div>
 
+                        </div>
                     </div>
+
+
+
+
+
                 </div>
-
-
-
-
-
-   </div>
             </div>
 
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    {{-- <div class="full-img" id="fullImg">
-    <img src="" alt="" id="fullImg">
-    <span onclick="closeFullImg()">X</span>
-
-</div>
-<div class="img-gallery">
-    <img src="/images/{{$worker->image }}" alt="" onclick="openFullImg()">
-    <img src="/images/{{$worker->image }}" alt=""onclick="openFullImg()">
-    <img src="/images/{{$worker->image }}" alt=""onclick="openFullImg()">
-
-
-</div>
-<script>
-
-    var fullImgBox =document.getElementById("fullImgBox");
-    var fullImg =document.getElementById("fullImg");
-    function openFullImg(){
-        fullImgBox.style.display="flex";
-    }
-
-</script> --}}
-
-    {{-- @foreach ($worker->ReviewData as $review)
-    {{$review->rate}}
-    {{$review->comment}}
-@endforeach --}}
-    {{-- @foreach ($rates as $rate)
-@endforeach --}}
-    {{-- {{$rating->rate}} --}}
 @endsection
